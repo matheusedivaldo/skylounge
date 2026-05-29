@@ -1,0 +1,14 @@
+:root {
+  --color-primary: #1b120b;
+  --color-secondary: #000000;
+  --color-accent: #ffde59;
+  --color-highlight: #4d0011;
+  --color-neutral-light: #ffffff;
+  --color-neutral-muted: #8e8e93;
+  --color-bg-card: #f9f0e5;
+
+  --font-primary: "Belleza", sans-serif;
+  --font-secondary: "Montserrat", sans-serif;
+
+  --transition-default: all 0.3s ease-in-out;
+}
