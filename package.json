@@ -12,6 +12,7 @@
   "dependencies": {
     "@fontsource/belleza": "^5.2.8",
     "@fontsource/montserrat": "^5.2.8",
+    "@fontsource/unica-one": "^5.2.8",
     "lucide-react": "^1.17.0",
     "react": "^19.2.6",
     "react-dom": "^19.2.6"

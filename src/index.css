@@ -9,7 +9,7 @@
 }
 
 body {
-  background-color: var(--color-primary);
+  background-color: var(--color-secondary);
   color: var(--color-neutral-light);
   font-family: var(--font-secondary);
   overflow-x: hidden;
@@ -22,7 +22,7 @@ h4,
 h5,
 h6 {
   font-family: var(--font-primary);
-  letter-spacing: 1px;
+  letter-spacing: 2px;
 }
 
 a {
