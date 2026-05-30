@@ -1,0 +1,114 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  padding: 1.5rem 2rem;
+  transition: var(--transition-default);
+  background-color: transparent;
+}
+
+.scrolled {
+  padding: 1rem 2rem;
+  background-color: rgba(27, 18, 11, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-family: var(--font-primary);
+  font-size: 1.25rem;
+  letter-spacing: 2px;
+  color: var(--color-neutral-light);
+  font-weight: 400;
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.logo span {
+  font-size: 0.625rem;
+  letter-spacing: 4px;
+  color: var(--color-accent);
+  margin-top: 0.25rem;
+}
+
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.navLinks a {
+  font-family: var(--font-secondary);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--color-neutral-muted);
+  transition: var(--transition-default);
+}
+
+.navLinks a:hover {
+  color: var(--color-neutral-light);
+}
+
+.btnNav {
+  background-color: transparent;
+  border: 1px solid var(--color-neutral-light);
+  color: var(--color-neutral-light) !important;
+  padding: 0.5rem 1.25rem;
+  border-radius: 4px;
+  transition: var(--transition-default);
+}
+
+.btnNav:hover {
+  background-color: var(--color-neutral-light);
+  color: var(--color-secondary) !important;
+}
+
+.menuToggle {
+  display: none;
+  color: var(--color-neutral-light);
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1.25rem 1.5rem;
+  }
+
+  .scrolled {
+    padding: 1rem 1.5rem;
+  }
+
+  .menuToggle {
+    display: block;
+  }
+
+  .navLinks {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    height: 100vh;
+    background-color: var(--color-primary);
+    flex-direction: column;
+    justify-content: center;
+    gap: 3rem;
+    transition: 0.4s ease-in-out;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+  }
+
+  .navLinks.active {
+    right: 0;
+  }
+}
