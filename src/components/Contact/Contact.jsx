@@ -1,71 +1,70 @@
 import React from 'react';
-import { MapPin, Phone, Camera, Clock, CalendarCheck } from 'lucide-react';
+import { MapPin, Clock, MessageSquare, ArrowUpRight } from 'lucide-react';
 import styles from './Contact.module.css';
 
 export default function Contact() {
+    const whatsappUrl = "https://wa.me/5511994376464?text=Vim+pelo+site+e+gostaria+de+fazer+uma+reserva";
+
     return (
-        <section className={styles.contact} id="reservas">
+        <section className={styles.contactSection} id="reservas">
             <div className={styles.container}>
-                <div className={styles.infoSide}>
-                    <span className={styles.tagline}>RESERVAS E CONTATO</span>
-                    <h2 className={styles.title}>Planeje sua noite exclusiva</h2>
-                    <p className={styles.description}>
-                        Garante o seu lugar no topo. Entre em contato para reservas de mesas, lounges privativos ou eventos corporativos na nova referência premium da região.
-                    </p>
 
-                    <div className={styles.detailsList}>
-                        <div className={styles.detailItem}>
-                            <div className={styles.iconBox}>
-                                <MapPin size={20} />
+                <div className={styles.gridContainer}>
+                    <div className={styles.infoSide}>
+                        <span className={styles.tagline}>CONCIERGE & LOCALIZAÇÃO</span>
+                        <h2 className={styles.title}>Sua noite começa aqui</h2>
+                        <p className={styles.description}>
+                            Garanta seu espaço no rooftop mais exclusivo de Osasco. Entre em contato com nosso concierge para reservas de mesas, camarotes ou eventos corporativos.
+                        </p>
+
+                        <div className={styles.infoList}>
+                            <div className={styles.infoItem}>
+                                <div className={styles.iconWrapper}>
+                                    <MapPin size={20} />
+                                </div>
+                                <div className={styles.infoText}>
+                                    <h3>Onde Estamos</h3>
+                                    <p>Rua Prof. Jose Azevedo Minhoto, 509<br />Km 18, Osasco - SP</p>
+                                </div>
                             </div>
-                            <div>
-                                <h4>Localização</h4>
-                                <p>Osasco - SP (Em breve endereço completo)</p>
+
+                            <div className={styles.infoItem}>
+                                <div className={styles.iconWrapper}>
+                                    <Clock size={20} />
+                                </div>
+                                <div className={styles.infoText}>
+                                    <h3>Horário de Funcionamento</h3>
+                                    <p>Quinta a Sábado: 19h às 04h<br />Domingo: 16h às 00h</p>
+                                </div>
                             </div>
                         </div>
 
-                        <div className={styles.detailItem}>
-                            <div className={styles.iconBox}>
-                                <Clock size={20} />
-                            </div>
-                            <div>
-                                <h4>Horários (Inauguração)</h4>
-                                <p>Quinta a Domingo — Das 18h às 02h</p>
-                            </div>
+                        <div className={styles.actionGroup}>
+                            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className={styles.btnPrimary}>
+                                <span>Reservar via WhatsApp</span>
+                                <MessageSquare size={18} />
+                            </a>
+                            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className={styles.btnSecondary}>
+                                <span>Siga o Instagram</span>
+                                <ArrowUpRight size={18} />
+                            </a>
                         </div>
+                    </div>
 
-                        <div className={styles.detailItem}>
-                            <div className={styles.iconBox}>
-                                <Phone size={20} />
-                            </div>
-                            <div>
-                                <h4>WhatsApp</h4>
-                                <p>(11) 99437-6464</p>
-                            </div>
-                        </div>
-
-                        <div className={styles.detailItem}>
-                            <div className={styles.iconBox}>
-                                <Camera size={20} />
-                            </div>
-                            <div>
-                                <h4>Instagram</h4>
-                                <p>@blackewhitemkt</p>
-                            </div>
+                    <div className={styles.mapSide} id="mapa">
+                        <div className={styles.mapWrapper}>
+                            <iframe
+                                src="https://maps.google.com/maps?q=Rua%20Professor%20Jose%20Azevedo%20Minhoto,%20509%20-%20Osasco&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                                className={styles.mapIframe}
+                                allowFullScreen=""
+                                loading="lazy"
+                                referrerPolicy="no-referrer-when-downgrade"
+                                title="Localização Sky Lounge"
+                            ></iframe>
                         </div>
                     </div>
                 </div>
 
-                <div className={styles.actionSide}>
-                    <div className={styles.bookingCard}>
-                        <CalendarCheck size={40} className={styles.bookingIcon} />
-                        <h3>Pré-Reserva & Lista VIP</h3>
-                        <p>Seja um dos primeiros a vivenciar a experiência do rooftop antes da abertura oficial para o público geral.</p>
-                        <a href="https://wa.me/511994376464?text=Quero+garantir+minha+reserva+no+Sky+Lounge" target="_blank" rel="noopener noreferrer" className={styles.btnBooking}>
-                            Solicitar Reserva via WhatsApp
-                        </a>
-                    </div>
-                </div>
             </div>
         </section>
     );

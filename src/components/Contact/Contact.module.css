@@ -1,41 +1,46 @@
-.contact {
+.contactSection {
   width: 100%;
-  padding: 8rem 2rem;
-  background-color: var(--color-secondary);
-  display: flex;
-  justify-content: center;
-  border-top: 1px solid rgba(255, 255, 255, 0.02);
+  background-color: var(--color-black-pure);
+  color: var(--color-neutral-light);
+  padding: 8rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.03);
 }
 
 .container {
-  max-width: 1200px;
-  width: 100%;
-  display: flex;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 4rem;
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 6rem;
   align-items: center;
-  gap: 5rem;
 }
 
 .infoSide {
-  flex: 1.2;
+  display: flex;
+  flex-direction: column;
 }
 
 .tagline {
   font-family: var(--font-secondary);
   font-size: 0.75rem;
   font-weight: 600;
-  letter-spacing: 3px;
+  letter-spacing: 4px;
   color: var(--color-accent);
   margin-bottom: 1rem;
   display: block;
 }
 
 .title {
-  font-size: 2.5rem;
+  font-family: var(--font-primary);
+  font-size: 4rem;
   font-weight: 400;
+  line-height: 1.1;
   text-transform: uppercase;
-  color: var(--color-neutral-light);
-  margin-bottom: 1.5rem;
-  line-height: 1.2;
+  margin-bottom: 2rem;
 }
 
 .description {
@@ -44,136 +49,196 @@
   font-weight: 300;
   line-height: 1.7;
   color: var(--color-neutral-muted);
-  margin-bottom: 3rem;
+  margin-bottom: 3.5rem;
+  max-width: 500px;
 }
 
-.detailsList {
-  display: grid;
-  grid-template-columns: repeat(2, calc(50% - 1rem));
-  gap: 2rem;
+.infoList {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  margin-bottom: 4rem;
 }
 
-.detailItem {
+.infoItem {
   display: flex;
   align-items: flex-start;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
-.iconBox {
-  color: var(--color-accent);
+.iconWrapper {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 0.25rem;
-}
-
-.detailItem h4 {
-  font-size: 1.125rem;
-  font-weight: 400;
-  color: var(--color-neutral-light);
-  margin-bottom: 0.25rem;
-  text-transform: uppercase;
-}
-
-.detailItem p {
-  font-family: var(--font-secondary);
-  font-size: 0.875rem;
-  font-weight: 300;
-  color: var(--color-neutral-muted);
-  line-height: 1.5;
-}
-
-.actionSide {
-  flex: 0.8;
-  width: 100%;
-}
-
-.bookingCard {
-  background-color: var(--color-primary);
-  border: 1px solid rgba(255, 255, 255, 0.03);
-  padding: 3.5rem 2.5rem;
-  border-radius: 4px;
-  text-align: center;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.bookingIcon {
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   color: var(--color-accent);
-  margin-bottom: 1.5rem;
+  flex-shrink: 0;
+  transition: var(--transition-default);
 }
 
-.bookingCard h3 {
-  font-size: 1.5rem;
-  font-weight: 400;
+.infoItem:hover .iconWrapper {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
   color: var(--color-neutral-light);
-  margin-bottom: 1rem;
-  text-transform: uppercase;
 }
 
-.bookingCard p {
+.infoText h3 {
+  font-family: var(--font-primary);
+  font-size: 1.25rem;
+  font-weight: 400;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.infoText p {
   font-family: var(--font-secondary);
   font-size: 0.9375rem;
   font-weight: 300;
   line-height: 1.6;
   color: var(--color-neutral-muted);
-  margin-bottom: 2rem;
 }
 
-.btnBooking {
-  width: 100%;
-  display: block;
-  background-color: var(--color-accent);
-  color: var(--color-secondary);
+.actionGroup {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.btnPrimary {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: var(--color-primary);
+  color: var(--color-neutral-light);
   font-family: var(--font-secondary);
   font-weight: 600;
-  font-size: 0.875rem;
-  padding: 1.125rem;
-  border-radius: 4px;
+  font-size: 0.8125rem;
+  padding: 1.25rem 2.5rem;
   text-transform: uppercase;
   letter-spacing: 1px;
   transition: var(--transition-default);
+  border: 1px solid var(--color-primary);
 }
 
-.btnBooking:hover {
-  background-color: var(--color-neutral-light);
+.btnPrimary:hover {
+  background-color: transparent;
+  border-color: var(--color-neutral-light);
   transform: translateY(-2px);
 }
 
-@media (max-width: 1024px) {
-  .container {
-    flex-direction: column;
+.btnSecondary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: transparent;
+  color: var(--color-neutral-light);
+  font-family: var(--font-secondary);
+  font-weight: 600;
+  font-size: 0.8125rem;
+  padding: 1.25rem 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: var(--transition-default);
+  border-bottom: 1px solid transparent;
+}
+
+.btnSecondary:hover {
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent);
+}
+
+.mapSide {
+  width: 100%;
+  height: 100%;
+  min-height: 600px;
+  position: relative;
+}
+
+.mapWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  background-color: var(--color-secondary);
+  overflow: hidden;
+}
+
+.mapIframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  filter: grayscale(100%) invert(92%) contrast(85%);
+  transition: var(--transition-default);
+}
+
+.mapWrapper:hover .mapIframe {
+  filter: grayscale(80%) invert(92%) contrast(90%);
+}
+
+@media (max-width: 1200px) {
+  .gridContainer {
     gap: 4rem;
   }
-
-  .infoSide,
-  .actionSide {
-    max-width: 100%;
-    flex: none;
+  .title {
+    font-size: 3.2rem;
   }
+  .mapSide {
+    min-height: 500px;
+  }
+}
 
-  .actionSide {
+@media (max-width: 968px) {
+  .contactSection {
+    padding: 6rem 0;
+  }
+  .gridContainer {
+    grid-template-columns: 1fr;
+    gap: 5rem;
+  }
+  .mapSide {
+    position: relative;
+    height: 450px;
+    min-height: auto;
+  }
+  .actionGroup {
+    flex-direction: column;
+    align-items: flex-start;
     width: 100%;
+  }
+  .btnPrimary {
+    width: 100%;
+    justify-content: center;
+  }
+  .btnSecondary {
+    padding-left: 1rem;
   }
 }
 
 @media (max-width: 768px) {
-  .contact {
-    padding: 5rem 1.5rem;
+  .container {
+    padding: 0 2rem;
   }
-
   .title {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
+}
 
-  .detailsList {
-    grid-template-columns: 100%;
-    gap: 1.5rem;
+@media (max-width: 500px) {
+  .container {
+    padding: 0 1.5rem;
   }
-
-  .bookingCard {
-    padding: 2.5rem 1.5rem;
+  .title {
+    font-size: 2.2rem;
+  }
+  .description {
+    font-size: 0.9375rem;
+  }
+  .mapSide {
+    height: 350px;
   }
 }
