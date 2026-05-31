@@ -1,117 +1,199 @@
-.about {
+.aboutSection {
   width: 100%;
-  padding: 8rem 2rem;
-  background-color: var(--color-secondary);
-  display: flex;
-  justify-content: center;
+  background-color: var(--color-black-pure);
+  color: var(--color-neutral-light);
+  padding: 10rem 0;
+  overflow: hidden;
 }
 
 .container {
-  max-width: 1200px;
-  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 4rem;
 }
 
-.header {
-  text-align: center;
-  margin-bottom: 5rem;
+.mainGrid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 8rem;
+  align-items: center;
+}
+
+.textSide {
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 .tagline {
   font-family: var(--font-secondary);
   font-size: 0.75rem;
   font-weight: 600;
-  letter-spacing: 3px;
+  letter-spacing: 4px;
   color: var(--color-accent);
   margin-bottom: 1rem;
 }
 
 .title {
+  font-family: var(--font-primary);
+  font-size: 4.5rem;
+  font-weight: 400;
+  line-height: 1.1;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+
+.description {
+  font-family: var(--font-secondary);
+  font-size: 1.0625rem;
+  font-weight: 300;
+  line-height: 1.8;
+  color: var(--color-neutral-muted);
+  margin-bottom: 4rem;
+  max-width: 580px;
+}
+
+.pillars {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.pillar {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.pillar span {
+  font-family: var(--font-primary);
   font-size: 2.5rem;
+  line-height: 1;
+  color: var(--color-primary);
+  font-weight: 400;
+}
+
+.pillar h3 {
+  font-family: var(--font-primary);
+  font-size: 1.5rem;
   font-weight: 400;
   text-transform: uppercase;
-  color: var(--color-neutral-light);
-  margin-bottom: 1.5rem;
-  max-width: 700px;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
 }
 
-.subtitle {
+.pillar p {
   font-family: var(--font-secondary);
-  font-size: 1rem;
+  font-size: 0.9375rem;
   font-weight: 300;
-  line-height: 1.7;
+  line-height: 1.5;
   color: var(--color-neutral-muted);
-  max-width: 800px;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(4, 100% / 4);
-  gap: 2rem;
+.imageSide {
+  display: flex;
+  justify-content: center;
+  position: relative;
 }
 
-.card {
-  background-color: rgba(27, 18, 11, 0.4);
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+}
+
+.mainImage {
+  width: 100%;
+  height: 600px;
+  background-image: url("https://images.unsplash.com/photo-1578683010236-d716f9a3f461?q=80&w=1200");
+  background-size: cover;
+  background-position: center;
+  filter: brightness(75%) contrast(105%);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.decorCard {
+  position: absolute;
+  bottom: -2rem;
+  left: -3rem;
+  background-color: var(--color-primary);
+  padding: 2.5rem;
+  max-width: 280px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7);
   border: 1px solid rgba(255, 255, 255, 0.03);
-  padding: 2.5rem 2rem;
-  border-radius: 4px;
-  transition: var(--transition-default);
 }
 
-.card:hover {
-  border-color: var(--color-highlight);
-  transform: translateY(-4px);
-}
-
-.iconWrapper {
-  color: var(--color-accent);
-  margin-bottom: 1.5rem;
-  display: inline-block;
-}
-
-.card h3 {
+.decorCard h4 {
+  font-family: var(--font-primary);
   font-size: 1.25rem;
   font-weight: 400;
-  color: var(--color-neutral-light);
-  margin-bottom: 1rem;
-  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.75rem;
+  color: var(--color-accent);
 }
 
-.card p {
+.decorCard p {
   font-family: var(--font-secondary);
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   font-weight: 300;
-  line-height: 1.6;
+  line-height: 1.5;
   color: var(--color-neutral-muted);
 }
 
-@media (max-width: 1024px) {
-  .grid {
-    grid-template-columns: repeat(2, calc(50% - 1rem));
+@media (max-width: 1200px) {
+  .mainGrid {
+    gap: 4rem;
+  }
+  .title {
+    font-size: 3.5rem;
+  }
+}
+
+@media (max-width: 968px) {
+  .aboutSection {
+    padding: 6rem 0;
+  }
+  .mainGrid {
+    grid-template-columns: 1fr;
+    gap: 6rem;
+  }
+  .description {
+    margin-bottom: 3rem;
+    max-width: 100%;
+  }
+  .imageWrapper {
+    max-width: 100%;
+  }
+  .mainImage {
+    height: 480px;
+  }
+  .decorCard {
+    left: 1.5rem;
+    bottom: -1.5rem;
   }
 }
 
 @media (max-width: 768px) {
-  .about {
-    padding: 5rem 1.5rem;
+  .container {
+    padding: 0 2rem;
   }
-
-  .header {
-    margin-bottom: 3rem;
-  }
-
   .title {
-    font-size: 2rem;
+    font-size: 2.8rem;
   }
+}
 
-  .grid {
-    grid-template-columns: 100%;
-    gap: 1.5rem;
+@media (max-width: 500px) {
+  .container {
+    padding: 0 1.5rem;
   }
-
-  .card {
-    padding: 2rem;
+  .title {
+    font-size: 2.2rem;
+  }
+  .description {
+    font-size: 0.9375rem;
+  }
+  .decorCard {
+    position: static;
+    max-width: 100%;
+    margin-top: 1.5rem;
   }
 }
