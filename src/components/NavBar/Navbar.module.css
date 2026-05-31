@@ -4,58 +4,48 @@
   left: 0;
   width: 100%;
   z-index: 100;
-  padding: 2.5rem 4rem;
+  padding: 1.5rem 2rem;
   transition: var(--transition-default);
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0.9) 0%,
-    rgba(0, 0, 0, 0) 100%
-  );
+  background-color: transparent;
 }
 
 .scrolled {
-  padding: 1.25rem 4rem;
-  background-color: rgba(27, 18, 11, 0.98);
-  backdrop-filter: blur(12px);
+  padding: 1rem 2rem;
+  background-color: rgba(27, 18, 11, 0.95);
+  backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .container {
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-}
-
-.logoWrapper {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
 }
 
 .logo {
-  height: 110px;
-  width: auto;
-  object-fit: contain;
-  transition: var(--transition-default);
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.6));
-}
-
-.scrolled .logo {
-  height: 80px;
-}
-
-.navMenu {
+  font-family: var(--font-primary);
+  font-size: 1.25rem;
+  letter-spacing: 2px;
+  color: var(--color-neutral-light);
+  font-weight: 400;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.logo span {
+  font-size: 0.625rem;
+  letter-spacing: 4px;
+  color: var(--color-accent);
+  margin-top: 0.25rem;
 }
 
 .navLinks {
   display: flex;
   align-items: center;
-  gap: 3.5rem;
+  gap: 2.5rem;
 }
 
 .navLinks a {
@@ -63,20 +53,8 @@
   font-size: 0.8125rem;
   font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   color: var(--color-neutral-muted);
-  transition: var(--transition-default);
-  position: relative;
-}
-
-.navLinks a::after {
-  content: "";
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background-color: var(--color-accent);
   transition: var(--transition-default);
 }
 
@@ -84,153 +62,53 @@
   color: var(--color-neutral-light);
 }
 
-.navLinks a:hover::after {
-  width: 100%;
-}
-
-.mobileOnlyLink {
-  display: none;
-}
-
-.rightActions {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  justify-content: flex-end;
-}
-
-.mapsBtnDesktop {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-family: var(--font-secondary);
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: var(--color-neutral-light);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 0.75rem 1.5rem;
-  background-color: rgba(0, 0, 0, 0.4);
-  transition: var(--transition-default);
-}
-
-.mapsBtnDesktop:hover {
-  border-color: var(--color-accent);
-  color: var(--color-accent);
-}
-
-.whatsappBtnDesktop {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-family: var(--font-secondary);
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: var(--color-neutral-light);
-  background-color: var(--color-primary);
-  padding: 0.75rem 1.5rem;
-  transition: var(--transition-default);
-  border: 1px solid var(--color-primary);
-}
-
-.whatsappBtnDesktop:hover {
+.btnNav {
   background-color: transparent;
-  border-color: var(--color-neutral-light);
+  border: 1px solid var(--color-neutral-light);
+  color: var(--color-neutral-light) !important;
+  padding: 0.5rem 1.25rem;
+  border-radius: 4px;
+  transition: var(--transition-default);
 }
 
-.menuToggle,
-.menuClose {
+.btnNav:hover {
+  background-color: var(--color-neutral-light);
+  color: var(--color-secondary) !important;
+}
+
+.menuToggle {
   display: none;
   color: var(--color-neutral-light);
 }
 
-.whatsappBtnMobile {
-  display: none;
-}
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1.25rem 1.5rem;
+  }
 
-@media (max-width: 1200px) {
-  .navbar,
-  .scrolled {
-    padding: 1rem 2rem;
-  }
-  .logo {
-    height: 90px;
-  }
-  .scrolled .logo {
-    height: 70px;
-  }
-  .container {
-    grid-template-columns: 1fr auto;
-  }
-  .navMenu {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 280px;
-    height: 100vh;
-    background-color: var(--color-secondary);
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 3rem;
-    padding: 6rem 2rem 2rem 2rem;
-    transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
-    box-shadow: -10px 0 40px rgba(0, 0, 0, 0.8);
-  }
-  .navMenu.menuActive {
-    right: 0;
-  }
-  .navLinks {
-    flex-direction: column;
-    gap: 2.5rem;
-    width: 100%;
-  }
-  .mobileOnlyLink {
-    display: block;
-  }
-  .menuToggle {
-    display: block;
-  }
-  .menuClose {
-    display: block;
-    position: absolute;
-    top: 1.5rem;
-    right: 2rem;
-  }
-  .whatsappBtnDesktop,
-  .mapsBtnDesktop {
-    display: none;
-  }
-  .whatsappBtnMobile {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-family: var(--font-secondary);
-    font-size: 0.8125rem;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: var(--color-secondary) !important;
-    background-color: var(--color-accent);
-    padding: 1rem;
-    width: 100%;
-    justify-content: center;
-    margin-top: auto;
-  }
-}
-
-@media (max-width: 500px) {
-  .navbar,
   .scrolled {
     padding: 1rem 1.5rem;
   }
-  .logo {
-    height: 75px;
+
+  .menuToggle {
+    display: block;
   }
-  .scrolled .logo {
-    height: 60px;
+
+  .navLinks {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    height: 100vh;
+    background-color: var(--color-primary);
+    flex-direction: column;
+    justify-content: center;
+    gap: 3rem;
+    transition: 0.4s ease-in-out;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+  }
+
+  .navLinks.active {
+    right: 0;
   }
 }
