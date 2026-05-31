@@ -1,44 +1,60 @@
 import React from 'react';
-import { ExternalLink } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import styles from './MenuPreview.module.css';
 
 export default function MenuPreview() {
-    const featuredItems = [
-        { name: 'Signature Sky', price: 'R$ 38', desc: 'Gin premium, infusão de frutas azuis, tônica e toque cítrico.' },
-        { name: 'Golden Sunset', price: 'R$ 42', desc: 'Bourbon, xarope de mel trufado, limão siciliano e lâminas de ouro.' },
-        { name: 'Rooftop Mules', price: 'R$ 36', desc: 'Vodka, suco de limão fresco, xarope de gengibre artesanal e espuma densa.' },
-        { name: 'Dark Eclipse', price: 'R$ 40', desc: 'Rum envelhecido, licor de café, café espresso e finalização com cacau.' }
-    ];
-
     return (
-        <section className={styles.menuPreview} id="cardapio">
+        <section className={styles.menuSection} id="cardapio">
             <div className={styles.container}>
-                <div className={styles.sideContent}>
-                    <span className={styles.tagline}>EXPERIÊNCIA GASTRONÔMICA</span>
-                    <h2 className={styles.title}>Alta coquetelaria e sabores refinados</h2>
-                    <p className={styles.description}>
-                        Nossa carta de drinks foi desenhada por especialistas para traduzir a sofisticação da noite. Cada ingrediente é selecionado para elevar sua experiência acima do comum.
-                    </p>
-                    <a href="#cardapio-completo" className={styles.btnMenu}>
-                        Acessar Cardápio Digital
-                        <ExternalLink size={16} />
+
+                <div className={styles.headerBox}>
+                    <span className={styles.tagline}>CURADORIA GASTRONÔMICA</span>
+                    <h2 className={styles.title}>Uma prévia do extraordinário</h2>
+                </div>
+
+                <div className={styles.mosaicGrid}>
+
+                    <div className={`${styles.mosaicItem} ${styles.itemLarge}`}>
+                        <div className={`${styles.image} ${styles.imgCocktail1}`}></div>
+                        <div className={styles.itemOverlay}>
+                            <h3>Alta Coquetelaria</h3>
+                            <p>Drinks autorais assinados por mixologistas renomados.</p>
+                        </div>
+                    </div>
+
+                    <div className={`${styles.mosaicItem} ${styles.itemSmall}`}>
+                        <div className={`${styles.image} ${styles.imgPlate1}`}></div>
+                        <div className={styles.itemOverlay}>
+                            <h3>Entradas Premium</h3>
+                            <p>Sabores sofisticados para abrir a noite.</p>
+                        </div>
+                    </div>
+
+                    <div className={`${styles.mosaicItem} ${styles.itemSmall}`}>
+                        <div className={`${styles.image} ${styles.imgCocktail2}`}></div>
+                        <div className={styles.itemOverlay}>
+                            <h3>Clássicos Reinventados</h3>
+                            <p>A perfeição técnica em releituras contemporâneas.</p>
+                        </div>
+                    </div>
+
+                    <div className={`${styles.mosaicItem} ${styles.itemHorizontal}`}>
+                        <div className={`${styles.image} ${styles.imgPlate2}`}></div>
+                        <div className={styles.itemOverlay}>
+                            <h3>Gastronomia Urbana</h3>
+                            <p>Pratos minimalistas com execução impecável.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div className={styles.actionBox}>
+                    <a href="#cardapio-digital" className={styles.btnMenu}>
+                        <span>Acessar Cardápio Digital</span>
+                        <ArrowUpRight size={18} />
                     </a>
                 </div>
 
-                <div className={styles.sideList}>
-                    <div className={styles.listWrapper}>
-                        {featuredItems.map((item, index) => (
-                            <div key={index} className={styles.menuItem}>
-                                <div className={styles.itemHeader}>
-                                    <h3 className={styles.itemName}>{item.name}</h3>
-                                    <span className={styles.itemDivider}></span>
-                                    <span className={styles.itemPrice}>{item.price}</span>
-                                </div>
-                                <p className={styles.itemDesc}>{item.desc}</p>
-                            </div>
-                        ))}
-                    </div>
-                </div>
             </div>
         </section>
     );
