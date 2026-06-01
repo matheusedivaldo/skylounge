@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapPin, Clock, MessageSquare, ArrowUpRight } from 'lucide-react';
+import { FaMapMarkerAlt, FaRegClock, FaWhatsapp, FaArrowRight } from 'react-icons/fa';
 import styles from './Contact.module.css';
 
 export default function Contact() {
@@ -20,7 +20,7 @@ export default function Contact() {
                         <div className={styles.infoList}>
                             <div className={styles.infoItem}>
                                 <div className={styles.iconWrapper}>
-                                    <MapPin size={20} />
+                                    <FaMapMarkerAlt size={20} />
                                 </div>
                                 <div className={styles.infoText}>
                                     <h3>Onde Estamos</h3>
@@ -30,7 +30,7 @@ export default function Contact() {
 
                             <div className={styles.infoItem}>
                                 <div className={styles.iconWrapper}>
-                                    <Clock size={20} />
+                                    <FaRegClock size={20} />
                                 </div>
                                 <div className={styles.infoText}>
                                     <h3>Horário de Funcionamento</h3>
@@ -42,11 +42,11 @@ export default function Contact() {
                         <div className={styles.actionGroup}>
                             <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className={styles.btnPrimary}>
                                 <span>Reservar via WhatsApp</span>
-                                <MessageSquare size={18} />
+                                <FaWhatsapp size={18} />
                             </a>
                             <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className={styles.btnSecondary}>
                                 <span>Siga o Instagram</span>
-                                <ArrowUpRight size={18} />
+                                <FaArrowRight size={16} />
                             </a>
                         </div>
                     </div>

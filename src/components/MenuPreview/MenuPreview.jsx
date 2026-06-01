@@ -1,5 +1,6 @@
 import React from 'react';
-import { ArrowUpRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { FaArrowRight } from 'react-icons/fa';
 import styles from './MenuPreview.module.css';
 
 export default function MenuPreview() {
@@ -49,10 +50,10 @@ export default function MenuPreview() {
                 </div>
 
                 <div className={styles.actionBox}>
-                    <a href="#cardapio-digital" className={styles.btnMenu}>
+                    <Link to="/cardapio-digital" className={styles.btnMenu}>
                         <span>Acessar Cardápio Digital</span>
-                        <ArrowUpRight size={18} />
-                    </a>
+                        <FaArrowRight size={18} />
+                    </Link>
                 </div>
 
             </div>

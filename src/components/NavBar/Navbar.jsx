@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, MessageSquare } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { FaBars, FaTimes, FaWhatsapp } from 'react-icons/fa';
 import logoImg from '../../assets/img/logos/logo-04.png';
 import styles from './Navbar.module.css';
 
@@ -16,38 +17,43 @@ export default function Navbar() {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    const closeMenu = () => setIsMenuOpen(false);
+
     return (
         <nav className={`${styles.navbar} ${isScrolled ? styles.scrolled : ''}`}>
             <div className={styles.container}>
 
                 <div className={styles.logoWrapper}>
-                    <img src={logoImg} alt="Sky Lounge" className={styles.logo} />
+                    <Link to="/" onClick={closeMenu}>
+                        <img src={logoImg} alt="Sky Lounge" className={styles.logo} />
+                    </Link>
                 </div>
 
                 <div className={`${styles.navMenu} ${isMenuOpen ? styles.menuActive : ''}`}>
-                    <button className={styles.menuClose} onClick={() => setIsMenuOpen(false)} aria-label="Fechar Menu">
-                        <X size={26} />
+                    <button className={styles.menuClose} onClick={closeMenu} aria-label="Fechar Menu">
+                        <FaTimes size={26} />
                     </button>
 
                     <div className={styles.navLinks}>
-                        <a href="#proposta" onClick={() => setIsMenuOpen(false)}>A Casa</a>
-                        <a href="#cardapio" onClick={() => setIsMenuOpen(false)}>Cardápio</a>
-                        <a href="#reservas" onClick={() => setIsMenuOpen(false)}>Reservas</a>
+                        <Link to="/proposta" onClick={closeMenu}>A Casa</Link>
+                        <Link to="/cardapio" onClick={closeMenu}>Cardápio</Link>
+                        <Link to="/reservas" onClick={closeMenu}>Reservas</Link>
+                        <Link to="/localizacao" onClick={closeMenu}>Como Chegar</Link>
                     </div>
 
                     <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className={styles.whatsappBtnMobile}>
-                        <MessageSquare size={16} />
+                        <FaWhatsapp size={18} />
                         <span>Fale Conosco</span>
                     </a>
                 </div>
 
                 <div className={styles.rightActions}>
                     <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className={styles.whatsappBtnDesktop}>
-                        <MessageSquare size={14} />
+                        <FaWhatsapp size={16} />
                         <span>Fale Conosco</span>
                     </a>
                     <button className={styles.menuToggle} onClick={() => setIsMenuOpen(true)} aria-label="Abrir Menu">
-                        <Menu size={26} />
+                        <FaBars size={26} />
                     </button>
                 </div>
 
