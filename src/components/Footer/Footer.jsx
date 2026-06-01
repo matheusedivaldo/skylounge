@@ -1,6 +1,6 @@
 import React from 'react';
-import { MessageSquare, MapPin } from 'lucide-react';
-import { FaInstagram } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import { FaInstagram, FaWhatsapp, FaMapMarkerAlt } from 'react-icons/fa';
 import logoImg from '../../assets/img/logos/logo-04.png';
 import styles from './Footer.module.css';
 
@@ -22,10 +22,10 @@ export default function Footer() {
                     <div className={styles.linksCol}>
                         <h4 className={styles.colTitle}>Navegação</h4>
                         <ul className={styles.linkList}>
-                            <li><a href="#proposta">A Casa</a></li>
-                            <li><a href="#cardapio">Cardápio</a></li>
-                            <li><a href="#reservas">Reservas</a></li>
-                            <li><a href="#mapa">Como Chegar</a></li>
+                            <li><Link to="/proposta">A Casa</Link></li>
+                            <li><Link to="/cardapio">Cardápio</Link></li>
+                            <li><Link to="/reservas">Reservas</Link></li>
+                            <li><Link to="/localizacao">Como Chegar</Link></li>
                         </ul>
                     </div>
 
@@ -33,11 +33,11 @@ export default function Footer() {
                         <h4 className={styles.colTitle}>Contato</h4>
                         <ul className={styles.infoList}>
                             <li>
-                                <MapPin size={16} />
+                                <FaMapMarkerAlt size={16} />
                                 <span>Rua Prof. Jose Azevedo Minhoto, 509<br />Km 18, Osasco - SP</span>
                             </li>
                             <li>
-                                <MessageSquare size={16} />
+                                <FaWhatsapp size={16} />
                                 <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
                                     +55 11 99437-6464
                                 </a>

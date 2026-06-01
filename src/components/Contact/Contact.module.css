@@ -198,7 +198,7 @@
   }
   .gridContainer {
     grid-template-columns: 1fr;
-    gap: 5rem;
+    gap: 4rem;
   }
   .mapSide {
     position: relative;
@@ -207,24 +207,34 @@
   }
   .actionGroup {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     width: 100%;
+    gap: 1rem;
   }
   .btnPrimary {
     width: 100%;
     justify-content: center;
   }
   .btnSecondary {
-    padding-left: 1rem;
+    width: 100%;
+    justify-content: center;
+    padding: 1rem 0;
   }
 }
 
 @media (max-width: 768px) {
+  .contactSection {
+    padding: 4rem 0;
+  }
   .container {
     padding: 0 2rem;
   }
   .title {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
+  }
+  .infoList {
+    gap: 2rem;
+    margin-bottom: 3rem;
   }
 }
 
@@ -237,6 +247,14 @@
   }
   .description {
     font-size: 0.9375rem;
+    margin-bottom: 2.5rem;
+  }
+  .infoItem {
+    gap: 1rem;
+  }
+  .iconWrapper {
+    width: 40px;
+    height: 40px;
   }
   .mapSide {
     height: 350px;

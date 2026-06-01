@@ -1,11 +1,9 @@
 .footer {
   width: 100%;
-  background-color: var(
-    --color-black-pure
-  ); /* <-- Fim do marrom, agora é 100% Preto Puro */
+  background-color: var(--color-black-pure);
   color: var(--color-neutral-light);
   border-top: 1px solid rgba(255, 255, 255, 0.05);
-  padding-top: 6rem;
+  padding: 4rem 0 2rem 0;
 }
 
 .container {
@@ -117,7 +115,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 2rem 0;
+  padding-top: 2rem;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
@@ -157,22 +155,46 @@
 }
 
 @media (max-width: 768px) {
+  .footer {
+    padding: 4rem 0 1.5rem 0;
+  }
   .container {
     padding: 0 2rem;
   }
   .topSection {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 3.5rem;
+    margin-bottom: 4rem;
   }
   .brandCol {
     grid-column: span 1;
+    align-items: center;
+    text-align: center;
+  }
+  .colTitle {
+    text-align: center;
+  }
+  .linkList {
+    align-items: center;
+  }
+  .linkList a:hover {
+    padding-left: 0;
+  }
+  .infoList {
+    align-items: center;
+    text-align: center;
+  }
+  .infoList li {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
   }
   .logo {
-    height: 65px;
+    height: 100px;
   }
   .bottomSection {
     flex-direction: column-reverse;
-    gap: 1rem;
+    gap: 1.5rem;
     text-align: center;
   }
 }
