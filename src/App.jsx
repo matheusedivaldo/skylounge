@@ -8,14 +8,14 @@ import MenuPreview from './components/MenuPreview/MenuPreview';
 import Contact from './components/Contact/Contact';
 import Footer from './components/Footer/Footer';
 import PageWrapper from './components/PageWrapper/PageWrapper';
-
-// Remova o const CardapioCompleto falso e faça o import real:
 import CardapioCompleto from './components/CardapioCompleto/CardapioCompleto';
+import FloatingButton from './components/FloatingButton/FloatingButton';
 
 export default function App() {
     return (
         <BrowserRouter>
             <Navbar />
+
             <PageWrapper>
                 <Routes>
                     <Route path="/" element={
@@ -26,6 +26,7 @@ export default function App() {
                             <Contact />
                         </>
                     } />
+
                     <Route path="/proposta" element={<About />} />
                     <Route path="/cardapio" element={<MenuPreview />} />
                     <Route path="/reservas" element={<Contact />} />
@@ -33,6 +34,8 @@ export default function App() {
                     <Route path="/cardapio-digital" element={<CardapioCompleto />} />
                 </Routes>
             </PageWrapper>
+
+            <FloatingButton />
             <Footer />
         </BrowserRouter>
     );
