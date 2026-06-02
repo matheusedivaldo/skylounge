@@ -13,7 +13,7 @@ import FloatingButton from './components/FloatingButton/FloatingButton';
 
 export default function App() {
     return (
-        <BrowserRouter basename="/skylounge">
+        <BrowserRouter>
             <Navbar />
 
             <PageWrapper>
