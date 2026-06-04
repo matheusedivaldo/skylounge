@@ -35,10 +35,10 @@ export default function Navbar() {
                     </button>
 
                     <div className={styles.navLinks}>
-                        <Link to="/proposta" onClick={closeMenu}>A Casa</Link>
-                        <Link to="/cardapio" onClick={closeMenu}>Cardápio</Link>
-                        <Link to="/reservas" onClick={closeMenu}>Reservas</Link>
-                        <Link to="/localizacao" onClick={closeMenu}>Como Chegar</Link>
+                        <a href="/#proposta" onClick={closeMenu}>A Casa</a>
+                        <a href="/#cardapio" onClick={closeMenu}>Cardápio</a>
+                        <a href="/#reservas" onClick={closeMenu}>Reservas</a>
+                        <a href="/#localizacao" onClick={closeMenu}>Como Chegar</a>
                     </div>
 
                     <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className={styles.whatsappBtnMobile}>
