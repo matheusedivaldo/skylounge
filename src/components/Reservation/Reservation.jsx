@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { FaWhatsapp } from 'react-icons/fa';
 import styles from './Reservation.module.css';
 
 export default function Reservation() {
+    const sectionRef = useRef(null);
+    const bgRef = useRef(null);
+
     const [formData, setFormData] = useState({
         nome: '',
         telefone: '',
@@ -10,40 +13,52 @@ export default function Reservation() {
         observacao: ''
     });
 
+    useEffect(() => {
+        let ticking = false;
+
+        const updateParallax = () => {
+            if (sectionRef.current && bgRef.current) {
+                const rect = sectionRef.current.getBoundingClientRect();
+
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    const scrollOffset = (window.innerHeight - rect.top) * 0.2;
+                    bgRef.current.style.transform = `translate3d(0, ${scrollOffset}px, 0)`;
+                }
+            }
+            ticking = false;
+        };
+
+        const handleScroll = () => {
+            if (!ticking) {
+                window.requestAnimationFrame(updateParallax);
+                ticking = true;
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        handleScroll();
+
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
     const formatPhone = (value) => {
         const numbers = value.replace(/\D/g, '').slice(0, 11);
-
-        if (numbers.length <= 2) {
-            return numbers;
-        }
-
-        if (numbers.length <= 7) {
-            return `(${numbers.slice(0, 2)}) ${numbers.slice(2)}`;
-        }
-
+        if (numbers.length <= 2) return numbers;
+        if (numbers.length <= 7) return `(${numbers.slice(0, 2)}) ${numbers.slice(2)}`;
         return `(${numbers.slice(0, 2)}) ${numbers.slice(2, 7)}-${numbers.slice(7)}`;
     };
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-
         if (name === 'telefone') {
-            setFormData({
-                ...formData,
-                telefone: formatPhone(value)
-            });
+            setFormData({ ...formData, telefone: formatPhone(value) });
             return;
         }
-
-        setFormData({
-            ...formData,
-            [name]: value
-        });
+        setFormData({ ...formData, [name]: value });
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
         const text =
             `*Olá, Sky Lounge!*%0A%0A` +
             `*Nome:* ${formData.nome}%0A` +
@@ -51,14 +66,16 @@ export default function Reservation() {
             `*Motivo:* ${formData.motivo}%0A` +
             `*Observações:* ${formData.observacao}`;
 
-        window.open(
-            `https://wa.me/5511994376464?text=${text}`,
-            '_blank'
-        );
+        window.open(`https://wa.me/5511994376464?text=${text}`, '_blank');
     };
 
     return (
-        <section className={styles.reservationSection} id="reservas">
+        <section className={styles.reservationSection} id="reservas" ref={sectionRef}>
+            <div
+                ref={bgRef}
+                className={styles.parallaxBackground}
+            />
+
             <div className={styles.overlay}></div>
 
             <div className={styles.container}>
@@ -80,10 +97,7 @@ export default function Reservation() {
                         </p>
                     </div>
 
-                    <form
-                        className={styles.form}
-                        onSubmit={handleSubmit}
-                    >
+                    <form className={styles.form} onSubmit={handleSubmit}>
                         <input
                             type="text"
                             name="nome"
@@ -110,21 +124,10 @@ export default function Reservation() {
                             onChange={handleChange}
                             className={styles.select}
                         >
-                            <option value="Reserva de Mesa">
-                                Reserva de Mesa
-                            </option>
-
-                            <option value="Comemoração de Aniversário">
-                                Comemoração de Aniversário
-                            </option>
-
-                            <option value="Evento Corporativo">
-                                Evento Corporativo
-                            </option>
-
-                            <option value="Apenas Conhecer o Local">
-                                Apenas Conhecer o Local
-                            </option>
+                            <option value="Reserva de Mesa">Reserva de Mesa</option>
+                            <option value="Comemoração de Aniversário">Comemoração de Aniversário</option>
+                            <option value="Evento Corporativo">Evento Corporativo</option>
+                            <option value="Apenas Conhecer o Local">Apenas Conhecer o Local</option>
                         </select>
 
                         <textarea
@@ -135,10 +138,7 @@ export default function Reservation() {
                             className={styles.textarea}
                         />
 
-                        <button
-                            type="submit"
-                            className={styles.btnSubmit}
-                        >
+                        <button type="submit" className={styles.btnSubmit}>
                             <FaWhatsapp />
                             Reservar Agora
                         </button>
