@@ -22,10 +22,10 @@ export default function Footer() {
                     <div className={styles.linksCol}>
                         <h4 className={styles.colTitle}>Navegação</h4>
                         <ul className={styles.linkList}>
-                            <li><Link to="/proposta">A Casa</Link></li>
-                            <li><Link to="/cardapio">Cardápio</Link></li>
-                            <li><Link to="/reservas">Reservas</Link></li>
-                            <li><Link to="/localizacao">Como Chegar</Link></li>
+                            <li><a href="/#proposta">A Casa</a></li>
+                            <li><a href="/#cardapio">Cardápio</a></li>
+                            <li><a href="/#reservas">Reservas</a></li>
+                            <li><a href="/#localizacao">Como Chegar</a></li>
                         </ul>
                     </div>
 
@@ -34,7 +34,7 @@ export default function Footer() {
                         <ul className={styles.infoList}>
                             <li>
                                 <FaMapMarkerAlt size={16} />
-                                <span>Rua Prof. Jose Azevedo Minhoto, 509<br />Km 18, Osasco - SP</span>
+                                <span>Rua Prof. Jose Azevedo Minhoto, 509 - Cobertura<br />Km 18, Osasco - SP</span>
                             </li>
                             <li>
                                 <FaWhatsapp size={16} />
@@ -44,8 +44,8 @@ export default function Footer() {
                             </li>
                             <li>
                                 <FaInstagram size={16} />
-                                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-                                    @skylounge
+                                <a href="https://www.instagram.com/skyloungerftp" target="_blank" rel="noopener noreferrer">
+                                    @skyloungerftp
                                 </a>
                             </li>
                         </ul>
