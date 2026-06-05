@@ -10,79 +10,140 @@ export default function Reservation() {
         observacao: ''
     });
 
+    const formatPhone = (value) => {
+        const numbers = value.replace(/\D/g, '').slice(0, 11);
+
+        if (numbers.length <= 2) {
+            return numbers;
+        }
+
+        if (numbers.length <= 7) {
+            return `(${numbers.slice(0, 2)}) ${numbers.slice(2)}`;
+        }
+
+        return `(${numbers.slice(0, 2)}) ${numbers.slice(2, 7)}-${numbers.slice(7)}`;
+    };
+
     const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
+        const { name, value } = e.target;
+
+        if (name === 'telefone') {
+            setFormData({
+                ...formData,
+                telefone: formatPhone(value)
+            });
+            return;
+        }
+
+        setFormData({
+            ...formData,
+            [name]: value
+        });
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const text = `*Olá, Sky Lounge!*%0A%0A*Nome:* ${formData.nome}%0A*Telefone:* ${formData.telefone}%0A*Motivo:* ${formData.motivo}%0A*Observações:* ${formData.observacao}`;
-        const url = `https://wa.me/5511994376464?text=${text}`;
-        window.open(url, '_blank');
+
+        const text =
+            `*Olá, Sky Lounge!*%0A%0A` +
+            `*Nome:* ${formData.nome}%0A` +
+            `*Telefone:* ${formData.telefone}%0A` +
+            `*Motivo:* ${formData.motivo}%0A` +
+            `*Observações:* ${formData.observacao}`;
+
+        window.open(
+            `https://wa.me/5511994376464?text=${text}`,
+            '_blank'
+        );
     };
 
     return (
         <section className={styles.reservationSection} id="reservas">
-            <div className={styles.container}>
-                <div className={styles.headerBox}>
-                    <span className={styles.tagline}>EXPERIÊNCIA EXCLUSIVA</span>
-                    <h2 className={styles.title}>Garanta seu lugar</h2>
-                </div>
+            <div className={styles.overlay}></div>
 
-                <form className={styles.form} onSubmit={handleSubmit}>
-                    <div className={styles.inputGroup}>
+            <div className={styles.container}>
+                <div className={styles.contentGrid}>
+                    <div className={styles.infoSide}>
+                        <span className={styles.tagline}>
+                            EXPERIÊNCIA EXCLUSIVA
+                        </span>
+
+                        <h2 className={styles.title}>
+                            Garanta seu lugar acima da cidade
+                        </h2>
+
+                        <p className={styles.description}>
+                            Reserve sua experiência e permita que nossa equipe
+                            cuide de cada detalhe para uma noite memorável,
+                            com vista privilegiada, atmosfera sofisticada e
+                            atendimento personalizado.
+                        </p>
+                    </div>
+
+                    <form
+                        className={styles.form}
+                        onSubmit={handleSubmit}
+                    >
                         <input
                             type="text"
                             name="nome"
-                            placeholder="Seu Nome Completo"
-                            required
+                            placeholder="Nome Completo"
                             value={formData.nome}
                             onChange={handleChange}
+                            required
                             className={styles.input}
                         />
+
                         <input
                             type="tel"
                             name="telefone"
-                            placeholder="Seu WhatsApp"
-                            required
+                            placeholder="(11) 99999-9999"
                             value={formData.telefone}
                             onChange={handleChange}
+                            required
                             className={styles.input}
                         />
-                    </div>
 
-                    <div className={styles.inputGroupFull}>
                         <select
                             name="motivo"
                             value={formData.motivo}
                             onChange={handleChange}
                             className={styles.select}
                         >
-                            <option value="Reserva de Mesa">Reserva de Mesa</option>
-                            <option value="Comemoração de Aniversário">Comemoração de Aniversário</option>
-                            <option value="Evento Corporativo">Evento Corporativo</option>
-                            <option value="Apenas Conhecer">Apenas Conhecer o Local</option>
-                        </select>
-                    </div>
+                            <option value="Reserva de Mesa">
+                                Reserva de Mesa
+                            </option>
 
-                    <div className={styles.inputGroupFull}>
+                            <option value="Comemoração de Aniversário">
+                                Comemoração de Aniversário
+                            </option>
+
+                            <option value="Evento Corporativo">
+                                Evento Corporativo
+                            </option>
+
+                            <option value="Apenas Conhecer o Local">
+                                Apenas Conhecer o Local
+                            </option>
+                        </select>
+
                         <textarea
                             name="observacao"
-                            placeholder="Alguma observação ou pedido especial? (Opcional)"
+                            placeholder="Observações ou pedidos especiais"
                             value={formData.observacao}
                             onChange={handleChange}
                             className={styles.textarea}
-                            rows="4"
-                        ></textarea>
-                    </div>
+                        />
 
-                    <div className={styles.actionBox}>
-                        <button type="submit" className={styles.btnSubmit}>
-                            <span>Enviar Reserva</span>
-                            <FaWhatsapp size={18} />
+                        <button
+                            type="submit"
+                            className={styles.btnSubmit}
+                        >
+                            <FaWhatsapp />
+                            Reservar Agora
                         </button>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </section>
     );
