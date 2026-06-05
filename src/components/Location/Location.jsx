@@ -20,7 +20,7 @@ export default function Location() {
                                 </div>
                                 <div className={styles.infoText}>
                                     <h3>Endereço</h3>
-                                    <p>Rua Prof. Jose Azevedo Minhoto, 509<br />Km 18, Osasco - SP</p>
+                                    <p>Rua Prof. Jose Azevedo Minhoto, 509 - Cobertura<br />Km 18, Osasco - SP</p>
                                 </div>
                             </div>
 
@@ -30,7 +30,7 @@ export default function Location() {
                                 </div>
                                 <div className={styles.infoText}>
                                     <h3>Horário de Funcionamento</h3>
-                                    <p>Quinta a Sábado: 19h às 04h<br />Domingo: 16h às 00h</p>
+                                    <p>Quinta e Sexta: 18:00 às 00:00<br />Sábado e Domingo: 11:00 às 01:00</p>
                                 </div>
                             </div>
                         </div>

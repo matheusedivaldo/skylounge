@@ -124,25 +124,15 @@
   position: absolute;
   top: 50%;
   left: 50%;
+  width: 60px;
   transform: translate(-50%, -100%);
-  width: 80px;
-  height: 80px;
-  background-color: var(--color-black-pure);
-  border: 2px solid var(--color-accent);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.9);
+  z-index: 5;
   pointer-events: none;
-  z-index: 10;
-  animation: floatPin 3s ease-in-out infinite;
 }
 
 .customMarker img {
-  width: 45px;
-  height: auto;
-  object-fit: contain;
+  width: 100%;
+  display: block;
 }
 
 @keyframes floatPin {
