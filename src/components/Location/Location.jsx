@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaMapMarkerAlt, FaRegClock } from 'react-icons/fa';
-import logoImg from '../../assets/img/logos/logo-04.png';
+import logoImg from '../../assets/img/logos/logo-mapa.png';
 import styles from './Location.module.css';
 
 export default function Location() {

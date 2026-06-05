@@ -1,11 +1,12 @@
 :root {
   --color-primary: #4d0011;
-  --color-secondary: #1b120b;
+  --color-secondary: #0f0f0f;
   --color-black-pure: #000000;
-  --color-accent: #ffde59;
+  --color-accent: #c8a45d;
+  --color-accent-soft: #e2c68a;
   --color-neutral-light: #ffffff;
-  --color-neutral-muted: #f9f0e5;
-  --color-gray-dark: #2a1e17;
+  --color-neutral-muted: #d6d6d6;
+  --color-gray-dark: #1e1e1e;
 
   --font-primary: "Belleza", sans-serif;
   --font-secondary: "Montserrat", sans-serif;
