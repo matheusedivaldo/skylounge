@@ -1,6 +1,5 @@
 import React from 'react';
 import { FaMapMarkerAlt, FaRegClock } from 'react-icons/fa';
-import logoImg from '../../assets/img/logos/logo-mapa.png';
 import styles from './Location.module.css';
 
 export default function Location() {
@@ -20,7 +19,11 @@ export default function Location() {
                                 </div>
                                 <div className={styles.infoText}>
                                     <h3>Endereço</h3>
-                                    <p>Rua Prof. Jose Azevedo Minhoto, 509 - Cobertura<br />Km 18, Osasco - SP</p>
+                                    <p>
+                                        Rua Prof. Jose Azevedo Minhoto, 509 - Cobertura
+                                        <br />
+                                        Km 18, Osasco - SP
+                                    </p>
                                 </div>
                             </div>
 
@@ -30,7 +33,11 @@ export default function Location() {
                                 </div>
                                 <div className={styles.infoText}>
                                     <h3>Horário de Funcionamento</h3>
-                                    <p>Quinta e Sexta: 18:00 às 00:00<br />Sábado e Domingo: 11:00 às 01:00</p>
+                                    <p>
+                                        Quinta e Sexta: 18:00 às 00:00
+                                        <br />
+                                        Sábado e Domingo: 11:00 às 01:00
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -45,10 +52,7 @@ export default function Location() {
                                 loading="lazy"
                                 referrerPolicy="no-referrer-when-downgrade"
                                 title="Localização Sky Lounge"
-                            ></iframe>
-                            <div className={styles.customMarker}>
-                                <img src={logoImg} alt="Sky Lounge" />
-                            </div>
+                            />
                         </div>
                     </div>
 
