@@ -1,45 +1,14 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import { FaWhatsapp } from 'react-icons/fa';
 import styles from './Reservation.module.css';
 
 export default function Reservation() {
-    const sectionRef = useRef(null);
-    const bgRef = useRef(null);
-
     const [formData, setFormData] = useState({
         nome: '',
         telefone: '',
         motivo: 'Reserva de Mesa',
         observacao: ''
     });
-
-    useEffect(() => {
-        let ticking = false;
-
-        const updateParallax = () => {
-            if (sectionRef.current && bgRef.current) {
-                const rect = sectionRef.current.getBoundingClientRect();
-
-                if (rect.top < window.innerHeight && rect.bottom > 0) {
-                    const scrollOffset = (window.innerHeight - rect.top) * 0.2;
-                    bgRef.current.style.transform = `translate3d(0, ${scrollOffset}px, 0)`;
-                }
-            }
-            ticking = false;
-        };
-
-        const handleScroll = () => {
-            if (!ticking) {
-                window.requestAnimationFrame(updateParallax);
-                ticking = true;
-            }
-        };
-
-        window.addEventListener('scroll', handleScroll, { passive: true });
-        handleScroll();
-
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
 
     const formatPhone = (value) => {
         const numbers = value.replace(/\D/g, '').slice(0, 11);
@@ -70,14 +39,7 @@ export default function Reservation() {
     };
 
     return (
-        <section className={styles.reservationSection} id="reservas" ref={sectionRef}>
-            <div
-                ref={bgRef}
-                className={styles.parallaxBackground}
-            />
-
-            <div className={styles.overlay}></div>
-
+        <section className={styles.reservationSection} id="reservas">
             <div className={styles.container}>
                 <div className={styles.contentGrid}>
                     <div className={styles.infoSide}>
