@@ -70,6 +70,7 @@
   color: var(--color-neutral-muted);
   transition: var(--transition-default);
   position: relative;
+  text-decoration: none;
 }
 
 .navLinks a::after {
@@ -111,6 +112,7 @@
   padding: 0.75rem 1.5rem;
   background-color: rgba(0, 0, 0, 0.4);
   transition: var(--transition-default);
+  text-decoration: none;
 }
 
 .whatsappBtnDesktop:hover {
@@ -123,6 +125,9 @@
 .menuClose {
   display: none;
   color: var(--color-neutral-light);
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 .whatsappBtnMobile {
@@ -180,20 +185,22 @@
     display: none;
   }
   .whatsappBtnMobile {
-    display: flex;
+    display: flex !important;
     align-items: center;
+    justify-content: center;
     gap: 0.5rem;
     font-family: var(--font-secondary);
     font-size: 0.8125rem;
     font-weight: 600;
     letter-spacing: 1px;
     text-transform: uppercase;
-    color: var(--color-secondary) !important;
-    background-color: var(--color-accent);
+    color: var(--color-black-pure) !important;
+    background-color: var(--color-accent) !important;
     padding: 1rem;
     width: 100%;
-    justify-content: center;
     margin-top: auto;
+    text-decoration: none;
+    border: none;
   }
 }
 
