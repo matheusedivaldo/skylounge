@@ -1,25 +1,26 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { FaInstagram, FaWhatsapp, FaMapMarkerAlt } from 'react-icons/fa';
 import logoImg from '../../assets/img/logos/logo-04.png';
 import styles from './Footer.module.css';
+import { useScrollReveal } from '../../hooks/useScrollReveal';
 
 export default function Footer() {
+    const { ref, isVisible } = useScrollReveal(0.1);
     const whatsappUrl = "https://wa.me/5511994376464?text=Vim+pelo+site+e+gostaria+de+mais+informa%C3%A7%C3%B5es";
 
     return (
-        <footer className={styles.footer}>
+        <footer className={`${styles.footer} ${isVisible ? 'visible' : ''}`} ref={ref}>
             <div className={styles.container}>
 
                 <div className={styles.topSection}>
-                    <div className={styles.brandCol}>
+                    <div className={`${styles.brandCol} revealUp`}>
                         <img src={logoImg} alt="Sky Lounge" className={styles.logo} />
                         <p className={styles.brandDesc}>
                             A sua nova referência premium em Osasco. Uma experiência elevada onde vista, ambiente e exclusividade se encontram.
                         </p>
                     </div>
 
-                    <div className={styles.linksCol}>
+                    <div className={`${styles.linksCol} revealUp delay-1`}>
                         <h4 className={styles.colTitle}>Navegação</h4>
                         <ul className={styles.linkList}>
                             <li><a href="/#proposta">A Casa</a></li>
@@ -29,7 +30,7 @@ export default function Footer() {
                         </ul>
                     </div>
 
-                    <div className={styles.contactCol}>
+                    <div className={`${styles.contactCol} revealUp delay-2`}>
                         <h4 className={styles.colTitle}>Contato</h4>
                         <ul className={styles.infoList}>
                             <li>
@@ -52,7 +53,7 @@ export default function Footer() {
                     </div>
                 </div>
 
-                <div className={styles.bottomSection}>
+                <div className={`${styles.bottomSection} revealUp delay-3`}>
                     <p className={styles.developer}>
                         Desenvolvido por <a href="https://matheusedivaldo.com.br/" target="_blank" rel="noopener noreferrer">Matheus Edivaldo</a>
                     </p>

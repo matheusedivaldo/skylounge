@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import styles from './CardapioCompleto.module.css';
+import { useScrollReveal } from '../../hooks/useScrollReveal';
 
 const menuData = [
     {
@@ -99,20 +100,47 @@ const menuData = [
     }
 ];
 
+const CategoryBlock = ({ section }) => {
+    const { ref, isVisible } = useScrollReveal(0.15);
+
+    return (
+        <section className={`${styles.categoryBlock} ${isVisible ? 'visible' : ''}`} ref={ref}>
+            <div className={`${styles.categoryHeader} revealUp`}>
+                <h2 className={styles.categoryTitle}>{section.category}</h2>
+                <div className={styles.separator}></div>
+            </div>
+
+            <div className={styles.grid}>
+                {section.items.map((item, index) => (
+                    <div key={index} className={`${styles.card} revealUp delay-${index + 1}`}>
+                        <img src={item.image} alt={item.title} className={styles.cardImg} loading="lazy" />
+                        <div className={styles.cardGradient}></div>
+                        <div className={styles.cardInfo}>
+                            <h3>{item.title}</h3>
+                            <p>{item.description}</p>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </section>
+    );
+};
+
 export default function CardapioCompleto() {
+    const { ref: heroRef, isVisible: heroVisible } = useScrollReveal(0.1);
+
     useEffect(() => {
         window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     }, []);
 
     return (
         <div className={styles.pageWrapper}>
-
-            <header className={styles.heroSection}>
+            <header className={`${styles.heroSection} ${heroVisible ? 'visible' : ''}`} ref={heroRef}>
                 <div className={styles.heroOverlay}></div>
                 <div className={styles.heroContent}>
-                    <span className={styles.tagline}>Nossa Assinatura</span>
-                    <h1 className={styles.title}>Menu Exclusivo</h1>
-                    <p className={styles.description}>
+                    <span className={`${styles.tagline} revealUp`}>Nossa Assinatura</span>
+                    <h1 className={`${styles.title} revealUp delay-1`}>Menu Exclusivo</h1>
+                    <p className={`${styles.description} revealUp delay-2`}>
                         Uma jornada visual e gastronômica, desenhada para elevar os seus sentidos a um novo patamar.
                     </p>
                 </div>
@@ -120,25 +148,7 @@ export default function CardapioCompleto() {
 
             <main className={styles.mainContent}>
                 {menuData.map((section, idx) => (
-                    <section key={idx} className={styles.categoryBlock}>
-                        <div className={styles.categoryHeader}>
-                            <h2 className={styles.categoryTitle}>{section.category}</h2>
-                            <div className={styles.separator}></div>
-                        </div>
-
-                        <div className={styles.grid}>
-                            {section.items.map((item, index) => (
-                                <div key={index} className={styles.card}>
-                                    <img src={item.image} alt={item.title} className={styles.cardImg} loading="lazy" />
-                                    <div className={styles.cardGradient}></div>
-                                    <div className={styles.cardInfo}>
-                                        <h3>{item.title}</h3>
-                                        <p>{item.description}</p>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </section>
+                    <CategoryBlock key={idx} section={section} />
                 ))}
             </main>
         </div>

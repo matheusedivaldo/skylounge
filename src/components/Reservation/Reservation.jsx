@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { FaWhatsapp } from 'react-icons/fa';
 import styles from './Reservation.module.css';
+import { useScrollReveal } from '../../hooks/useScrollReveal';
 
 export default function Reservation() {
+    const { ref, isVisible } = useScrollReveal(0.2);
     const [formData, setFormData] = useState({
         nome: '',
         telefone: '',
@@ -39,19 +41,19 @@ export default function Reservation() {
     };
 
     return (
-        <section className={styles.reservationSection} id="reservas">
+        <section className={`${styles.reservationSection} ${isVisible ? 'visible' : ''}`} id="reservas" ref={ref}>
             <div className={styles.container}>
                 <div className={styles.contentGrid}>
                     <div className={styles.infoSide}>
-                        <span className={styles.tagline}>
+                        <span className={`${styles.tagline} revealUp`}>
                             EXPERIÊNCIA EXCLUSIVA
                         </span>
 
-                        <h2 className={styles.title}>
+                        <h2 className={`${styles.title} revealUp delay-1`}>
                             Garanta seu lugar acima da cidade
                         </h2>
 
-                        <p className={styles.description}>
+                        <p className={`${styles.description} revealUp delay-2`}>
                             Reserve sua experiência e permita que nossa equipe
                             cuide de cada detalhe para uma noite memorável,
                             com vista privilegiada, atmosfera sofisticada e
@@ -59,7 +61,7 @@ export default function Reservation() {
                         </p>
                     </div>
 
-                    <form className={styles.form} onSubmit={handleSubmit}>
+                    <form className={`${styles.form} revealUp delay-3`} onSubmit={handleSubmit}>
                         <input
                             type="text"
                             name="nome"
