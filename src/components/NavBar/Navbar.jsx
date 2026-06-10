@@ -48,11 +48,6 @@ export default function Navbar() {
                         <a href="/#reservas" onClick={closeMenu}>Reservas</a>
                         <a href="/#localizacao" onClick={closeMenu}>Como Chegar</a>
                     </div>
-
-                    <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className={styles.whatsappBtnMobile}>
-                        <FaWhatsapp size={18} />
-                        <span>Fale Conosco</span>
-                    </a>
                 </div>
 
                 <div className={styles.rightActions}>
