@@ -10,11 +10,15 @@ use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
+use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
@@ -30,9 +34,12 @@ class MenuItemResource extends Resource
     {
         return $schema
             ->components([
-                TextInput::make('titulo')
-                    ->required()
-                    ->maxLength(255),
+                TextInput::make('titulo')->required()->maxLength(255),
+                TextInput::make('categoria')->required()->maxLength(255),
+                Textarea::make('descricao')->columnSpanFull(),
+                TextInput::make('preco')->required()->numeric()->prefix('R$'),
+                FileUpload::make('imagem')->image()->directory('menu-items'),
+                Toggle::make('ativo')->default(true),
             ]);
     }
 
@@ -41,6 +48,9 @@ class MenuItemResource extends Resource
         return $schema
             ->components([
                 TextEntry::make('titulo'),
+                TextEntry::make('categoria'),
+                TextEntry::make('preco')->money('BRL'),
+                TextEntry::make('ativo')->badge(),
             ]);
     }
 
@@ -49,12 +59,12 @@ class MenuItemResource extends Resource
         return $table
             ->recordTitleAttribute('titulo')
             ->columns([
-                TextColumn::make('titulo')
-                    ->searchable(),
+                TextColumn::make('titulo')->searchable(),
+                TextColumn::make('categoria'),
+                TextColumn::make('preco')->money('BRL'),
+                IconColumn::make('ativo')->boolean(),
             ])
-            ->filters([
-                //
-            ])
+            ->filters([])
             ->recordActions([
                 ViewAction::make(),
                 EditAction::make(),
