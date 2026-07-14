@@ -3,15 +3,23 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class MenuItem extends Model
 {
     protected $fillable = [
         'titulo',
-        'categoria',
+        'category_id',
         'descricao',
         'preco',
         'imagem',
         'ativo',
+        'destaque',
+        'ordem',
     ];
+
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(Category::class);
+    }
 }
