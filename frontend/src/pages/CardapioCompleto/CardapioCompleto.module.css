@@ -194,6 +194,49 @@
   color: var(--color-neutral-muted);
 }
 
+.cardPrice {
+  display: block;
+  font-family: var(--font-secondary);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-neutral-light);
+  margin-top: 0.75rem;
+}
+
+.stateMessage {
+  text-align: center;
+  padding: 4rem 2rem;
+  font-family: var(--font-secondary);
+  color: var(--color-neutral-muted);
+}
+
+.errorMessage {
+  composes: stateMessage;
+  color: var(--color-primary);
+}
+
+.skeletonGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2.5rem;
+}
+
+.skeletonCard {
+  height: 450px;
+  background: linear-gradient(90deg, #111 0%, #1c1c1c 50%, #111 100%);
+  background-size: 200% 100%;
+  animation: skeletonPulse 1.4s ease-in-out infinite;
+}
+
+@keyframes skeletonPulse {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
 @media (max-width: 1100px) {
   .title {
     font-size: 4.5rem;

@@ -18,6 +18,16 @@ class MenuItem extends Model
         'ordem',
     ];
 
+    protected function casts(): array
+    {
+        return [
+            'preco' => 'decimal:2',
+            'ativo' => 'boolean',
+            'destaque' => 'boolean',
+            'ordem' => 'integer',
+        ];
+    }
+
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);

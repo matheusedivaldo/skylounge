@@ -51,7 +51,7 @@ class MenuItemResource extends Resource
                                 TextInput::make('nome')->required()->maxLength(255),
                             ])
                             ->required(),
-                        TextInput::make('preco')->required()->numeric()->prefix('R$'),
+                        TextInput::make('preco')->required()->numeric()->minValue(0)->prefix('R$'),
                         Textarea::make('descricao')->columnSpanFull(),
                     ]),
                 Section::make('Mídia')
@@ -60,7 +60,10 @@ class MenuItemResource extends Resource
                             ->image()
                             ->disk('public')
                             ->directory('menu-items')
-                            ->imagePreviewHeight('250'),
+                            ->imagePreviewHeight('150')
+                            ->imageEditor()
+                            ->maxSize(2048)
+                            ->acceptedFileTypes(['image/jpeg', 'image/jpg', 'image/png', 'image/webp']),
                     ]),
                 Section::make('Visibilidade')
                     ->columns(3)

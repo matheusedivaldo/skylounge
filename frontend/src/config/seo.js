@@ -1,4 +1,4 @@
-export const SITE_URL = 'https://www.skygastrobar.com.br';
+export const SITE_URL = import.meta.env.VITE_SITE_URL;
 export const SITE_NAME = 'Sky Lounge Rooftop';
 
 export const BUSINESS = {

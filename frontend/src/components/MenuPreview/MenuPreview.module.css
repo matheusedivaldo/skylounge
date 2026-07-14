@@ -87,6 +87,28 @@
   );
 }
 
+.skeletonItem {
+  background: linear-gradient(90deg, #111 0%, #1c1c1c 50%, #111 100%);
+  background-size: 200% 100%;
+  animation: skeletonPulse 1.4s ease-in-out infinite;
+}
+
+@keyframes skeletonPulse {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.stateMessage {
+  text-align: center;
+  padding: 3rem 1rem;
+  font-family: var(--font-secondary);
+  color: var(--color-neutral-muted);
+}
+
 .mosaicItem:hover .image {
   transform: scale(1.04);
   filter: brightness(50%) contrast(105%);
