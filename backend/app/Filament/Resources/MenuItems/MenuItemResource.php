@@ -38,7 +38,7 @@ class MenuItemResource extends Resource
                 TextInput::make('categoria')->required()->maxLength(255),
                 Textarea::make('descricao')->columnSpanFull(),
                 TextInput::make('preco')->required()->numeric()->prefix('R$'),
-                FileUpload::make('imagem')->image()->directory('menu-items'),
+                FileUpload::make('imagem')->image()->disk('public')->directory('menu-items'),
                 Toggle::make('ativo')->default(true),
             ]);
     }

@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { FaCalendarAlt, FaWhatsapp, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import styles from './Hero.module.css';
+import banner01 from '../../assets/img/banners/01.jpeg';
+import banner02 from '../../assets/img/banners/02.jpeg';
+import banner03 from '../../assets/img/banners/03.jpeg';
 
 const slidesData = [
     {
@@ -8,21 +11,21 @@ const slidesData = [
         subtitle: 'ROOFTOP LOUNGE',
         title: 'A sua nova referência em Osasco',
         description: 'Uma experiência elevada onde vista, ambiente e exclusividade se encontram.',
-        image: 'https://images.unsplash.com/photo-1574096079513-d8259312b785?q=80&w=1920'
+        image: banner01
     },
     {
         id: 2,
         subtitle: 'ALTA COQUETELARIA',
         title: 'Sabores refinados acima da cidade',
         description: 'Carta exclusiva desenhada para pulsar com a atmosfera da cena noturna.',
-        image: 'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=1920'
+        image: banner02
     },
     {
         id: 3,
         subtitle: 'CULTURA DA CELEBRAÇÃO',
         title: 'Cenários à altura do seu momento',
         description: 'Arquitetura marcante e sofisticação para vivências muito acima do comum.',
-        image: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=1920'
+        image: banner03
     }
 ];
 
