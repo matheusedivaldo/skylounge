@@ -30,7 +30,7 @@ const CategoryBlock = ({ section }) => {
                         <div className={styles.cardInfo}>
                             <h3>{item.title}</h3>
                             <p>{item.description}</p>
-                            {formatPrice(item.price) && (
+                            {item.exibirPreco && formatPrice(item.price) && (
                                 <span className={styles.cardPrice}>{formatPrice(item.price)}</span>
                             )}
                         </div>
@@ -69,7 +69,8 @@ export default function CardapioCompleto() {
                         title: item.titulo,
                         description: item.descricao,
                         image: item.imagem_url || null,
-                        price: item.preco
+                        price: item.preco,
+                        exibirPreco: item.exibir_preco
                     };
 
                     if (categoryIndex > -1) {

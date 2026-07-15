@@ -1,0 +1,30 @@
+.fi-simple-layout {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at top, #3a000c 0%, #0a0a0a 60%, #000000 100%);
+}
+
+.fi-simple-layout-header {
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.fi-simple-main-ctn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 2rem 1rem;
+}
+
+.fi-simple-header .fi-logo {
+    height: 3.5rem;
+    margin: 0 auto 1.5rem;
+}
+
+.fi-simple-main {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.6);
+}

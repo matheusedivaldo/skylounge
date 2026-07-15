@@ -24,6 +24,12 @@ class CategoryResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'nome';
 
+    protected static \UnitEnum|string|null $navigationGroup = 'Cardápio';
+
+    protected static ?string $modelLabel = 'Categoria';
+
+    protected static ?string $pluralModelLabel = 'Categorias';
+
     public static function form(Schema $schema): Schema
     {
         return $schema

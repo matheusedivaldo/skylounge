@@ -11,6 +11,12 @@ const POSITIONS = [
     { wrapperClass: 'itemHorizontal', placeholderClass: 'imgPlate2' },
 ];
 
+const formatPrice = (price) => {
+    const value = Number(price);
+    if (Number.isNaN(value)) return null;
+    return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+};
+
 const MosaicSkeleton = () => (
     <div className={styles.mosaicGrid}>
         {POSITIONS.map((position, index) => (
@@ -81,6 +87,9 @@ export default function MenuPreview() {
                                     <div className={styles.itemOverlay}>
                                         <h3>{item.titulo}</h3>
                                         <p>{item.descricao}</p>
+                                        {item.exibir_preco && formatPrice(item.preco) && (
+                                            <span className={styles.itemPrice}>{formatPrice(item.preco)}</span>
+                                        )}
                                     </div>
                                 </div>
                             );

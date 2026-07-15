@@ -39,6 +39,7 @@ class MenuController extends Controller
             'titulo' => $item->titulo,
             'descricao' => $item->descricao,
             'preco' => $item->preco,
+            'exibir_preco' => $item->exibir_preco,
             'imagem_url' => $item->imagem ? asset('storage/' . $item->imagem) : null,
             'ativo' => $item->ativo,
             'destaque' => $item->destaque,

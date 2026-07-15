@@ -155,6 +155,15 @@
   max-width: 450px;
 }
 
+.itemPrice {
+  display: block;
+  font-family: var(--font-secondary);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-neutral-light);
+  margin-top: 0.5rem;
+}
+
 .actionBox {
   display: flex;
   justify-content: center;

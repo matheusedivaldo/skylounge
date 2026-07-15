@@ -12,6 +12,7 @@ class MenuItem extends Model
         'category_id',
         'descricao',
         'preco',
+        'exibir_preco',
         'imagem',
         'ativo',
         'destaque',
@@ -22,6 +23,7 @@ class MenuItem extends Model
     {
         return [
             'preco' => 'decimal:2',
+            'exibir_preco' => 'boolean',
             'ativo' => 'boolean',
             'destaque' => 'boolean',
             'ordem' => 'integer',

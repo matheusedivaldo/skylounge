@@ -34,6 +34,12 @@ class MenuItemResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'titulo';
 
+    protected static \UnitEnum|string|null $navigationGroup = 'Cardápio';
+
+    protected static ?string $modelLabel = 'Item do Cardápio';
+
+    protected static ?string $pluralModelLabel = 'Itens do Cardápio';
+
     public static function form(Schema $schema): Schema
     {
         return $schema
@@ -51,7 +57,10 @@ class MenuItemResource extends Resource
                                 TextInput::make('nome')->required()->maxLength(255),
                             ])
                             ->required(),
-                        TextInput::make('preco')->required()->numeric()->minValue(0)->prefix('R$'),
+                        TextInput::make('preco')->numeric()->minValue(0)->prefix('R$'),
+                        Toggle::make('exibir_preco')
+                            ->label('Exibir preço no site')
+                            ->default(true),
                         Textarea::make('descricao')->columnSpanFull(),
                     ]),
                 Section::make('Mídia')
@@ -96,7 +105,7 @@ class MenuItemResource extends Resource
                 ImageColumn::make('imagem')->disk('public'),
                 TextColumn::make('titulo')->searchable(),
                 TextColumn::make('category.nome')->label('Categoria')->badge(),
-                TextColumn::make('preco')->money('BRL'),
+                TextColumn::make('preco')->money('BRL')->placeholder('—'),
                 IconColumn::make('ativo')->boolean(),
                 IconColumn::make('destaque')->boolean(),
             ])
