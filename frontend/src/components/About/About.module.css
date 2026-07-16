@@ -89,6 +89,26 @@
   color: var(--color-neutral-muted);
 }
 
+.galleryLink {
+  display: inline-block;
+  margin-top: 3rem;
+  font-family: var(--font-secondary);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  border-bottom: 1px solid rgba(200, 164, 93, 0.4);
+  padding-bottom: 0.25rem;
+  transition: var(--transition-default);
+  width: fit-content;
+}
+
+.galleryLink:hover {
+  color: var(--color-accent-soft);
+  border-bottom-color: var(--color-accent-soft);
+}
+
 .imageSide {
   display: flex;
   justify-content: center;

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { FaArrowRight } from 'react-icons/fa';
 import styles from './MenuPreview.module.css';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
+import { formatPrice } from '../../utils/format';
 
 const POSITIONS = [
     { wrapperClass: 'itemLarge', placeholderClass: 'imgCocktail1' },
@@ -10,12 +11,6 @@ const POSITIONS = [
     { wrapperClass: 'itemSmall', placeholderClass: 'imgCocktail2' },
     { wrapperClass: 'itemHorizontal', placeholderClass: 'imgPlate2' },
 ];
-
-const formatPrice = (price) => {
-    const value = Number(price);
-    if (Number.isNaN(value)) return null;
-    return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-};
 
 const MosaicSkeleton = () => (
     <div className={styles.mosaicGrid}>

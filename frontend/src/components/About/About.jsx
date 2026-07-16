@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from './About.module.css';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
 
@@ -36,6 +37,10 @@ export default function About() {
                                 </div>
                             </div>
                         </div>
+
+                        <Link to="/galeria" className={`${styles.galleryLink} revealUp delay-3`}>
+                            Veja mais fotos do ambiente
+                        </Link>
                     </div>
 
                     <div className={`${styles.imageSide} revealUp delay-4`}>

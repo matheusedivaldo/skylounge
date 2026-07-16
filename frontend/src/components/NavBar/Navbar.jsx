@@ -45,6 +45,7 @@ export default function Navbar() {
                     <div className={styles.navLinks}>
                         <Link to="/proposta" onClick={closeMenu}>A Casa</Link>
                         <Link to="/cardapio" onClick={closeMenu}>Cardápio</Link>
+                        <Link to="/galeria" onClick={closeMenu}>Galeria</Link>
                         <Link to="/reservas" onClick={closeMenu}>Reservas</Link>
                         <Link to="/localizacao" onClick={closeMenu}>Como Chegar</Link>
                     </div>

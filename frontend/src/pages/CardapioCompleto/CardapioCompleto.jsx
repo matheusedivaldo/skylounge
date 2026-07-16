@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import styles from './CardapioCompleto.module.css';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
-
-const formatPrice = (price) => {
-    const value = Number(price);
-    if (Number.isNaN(value)) return null;
-    return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-};
+import Seo from '../../components/Seo/Seo';
+import { formatPrice } from '../../utils/format';
 
 const CategoryBlock = ({ section }) => {
     const { ref, isVisible } = useScrollReveal(0.15);
@@ -94,6 +90,11 @@ export default function CardapioCompleto() {
 
     return (
         <div className={styles.pageWrapper}>
+            <Seo
+                title="Cardápio Digital Completo"
+                description="Confira o cardápio completo do Sky Lounge Rooftop: drinks autorais, entradas premium e gastronomia urbana em Osasco."
+                path="/cardapio-digital"
+            />
             <header className={`${styles.heroSection} ${heroVisible ? 'visible' : ''}`} ref={heroRef}>
                 <div className={styles.heroOverlay}></div>
                 <div className={styles.heroContent}>
