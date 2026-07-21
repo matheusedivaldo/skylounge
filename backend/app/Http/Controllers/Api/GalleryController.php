@@ -12,7 +12,8 @@ class GalleryController extends Controller
 {
     public function index(): JsonResponse
     {
-        $galeria = GalleryItem::where('ativo', true)
+        $galeria = GalleryItem::with('category')
+            ->where('ativo', true)
             ->orderBy('ordem')
             ->get();
 
@@ -24,7 +25,7 @@ class GalleryController extends Controller
         return $items->map(fn (GalleryItem $item) => [
             'id' => $item->id,
             'legenda' => $item->legenda,
-            'categoria' => $item->categoria,
+            'categoria' => $item->category?->nome,
             'imagem_url' => $item->imagem ? asset('storage/' . $item->imagem) : null,
             'ordem' => $item->ordem,
         ]);

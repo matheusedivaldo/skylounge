@@ -37,13 +37,6 @@ class GalleryItemResource extends Resource
 
     protected static ?string $pluralModelLabel = 'Galeria';
 
-    public const CATEGORIAS = [
-        'Ambiente' => 'Ambiente',
-        'Drinks' => 'Drinks',
-        'Vista' => 'Vista',
-        'Eventos' => 'Eventos',
-    ];
-
     public static function form(Schema $schema): Schema
     {
         return $schema
@@ -64,8 +57,14 @@ class GalleryItemResource extends Resource
                 Section::make('Organização')
                     ->columns(3)
                     ->components([
-                        Select::make('categoria')
-                            ->options(self::CATEGORIAS),
+                        Select::make('gallery_category_id')
+                            ->label('Categoria')
+                            ->relationship('category', 'nome')
+                            ->searchable()
+                            ->preload()
+                            ->createOptionForm([
+                                TextInput::make('nome')->required()->maxLength(255),
+                            ]),
                         TextInput::make('ordem')->numeric()->default(0),
                         Toggle::make('ativo')->default(true),
                     ]),
@@ -79,14 +78,15 @@ class GalleryItemResource extends Resource
             ->columns([
                 ImageColumn::make('imagem')->disk('public'),
                 TextColumn::make('legenda')->searchable(),
-                TextColumn::make('categoria')->badge(),
+                TextColumn::make('category.nome')->label('Categoria')->badge(),
                 IconColumn::make('ativo')->boolean(),
             ])
             ->defaultSort('ordem')
             ->reorderable('ordem')
             ->filters([
-                SelectFilter::make('categoria')
-                    ->options(self::CATEGORIAS),
+                SelectFilter::make('gallery_category_id')
+                    ->label('Categoria')
+                    ->relationship('category', 'nome'),
             ])
             ->recordActions([
                 EditAction::make(),

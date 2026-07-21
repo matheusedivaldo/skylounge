@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { FaChevronLeft, FaChevronRight, FaTimes } from 'react-icons/fa';
 import styles from './Galeria.module.css';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
 import Seo from '../../components/Seo/Seo';
-
-const CATEGORIAS = ['Todos', 'Ambiente', 'Drinks', 'Vista', 'Eventos'];
 
 const GallerySkeleton = () => (
     <div className={styles.grid}>
@@ -38,6 +36,11 @@ export default function Galeria() {
                 setLoading(false);
             });
     }, []);
+
+    const categorias = useMemo(() => {
+        const unicas = [...new Set(fotos.map(foto => foto.categoria).filter(Boolean))];
+        return ['Todos', ...unicas];
+    }, [fotos]);
 
     const fotosFiltradas = categoriaAtiva === 'Todos'
         ? fotos
@@ -92,7 +95,7 @@ export default function Galeria() {
 
             <main className={styles.mainContent}>
                 <div className={styles.filters}>
-                    {CATEGORIAS.map((categoria) => (
+                    {categorias.map((categoria) => (
                         <button
                             key={categoria}
                             className={`${styles.filterBtn} ${categoriaAtiva === categoria ? styles.filterBtnActive : ''}`}

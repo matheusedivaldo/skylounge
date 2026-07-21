@@ -3,13 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class GalleryItem extends Model
 {
     protected $fillable = [
         'imagem',
         'legenda',
-        'categoria',
+        'gallery_category_id',
         'ordem',
         'ativo',
     ];
@@ -20,5 +21,10 @@ class GalleryItem extends Model
             'ativo' => 'boolean',
             'ordem' => 'integer',
         ];
+    }
+
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(GalleryCategory::class, 'gallery_category_id');
     }
 }
