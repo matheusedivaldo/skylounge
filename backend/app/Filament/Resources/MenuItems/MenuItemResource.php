@@ -45,25 +45,40 @@ class MenuItemResource extends Resource
         return $schema
             ->components([
                 Section::make('Informações Básicas')
-                    ->columns(['default' => 1, 'sm' => 2])
+                    ->columns(['default' => 1, 'md' => 12])
                     ->components([
-                        TextInput::make('titulo')->required()->maxLength(255)->columnSpanFull(),
+                        TextInput::make('titulo')
+                            ->required()
+                            ->maxLength(255)
+                            ->columnSpanFull(),
+
                         Select::make('category_id')
                             ->label('Categoria')
                             ->relationship('category', 'nome')
                             ->searchable()
                             ->preload()
+                            ->placeholder('Selecione')
                             ->createOptionForm([
                                 TextInput::make('nome')->required()->maxLength(255),
                             ])
-                            ->required(),
-                        TextInput::make('preco')->numeric()->minValue(0)->prefix('R$'),
+                            ->required()
+                            ->columnSpan(['default' => 12, 'md' => 7]),
+
+                        TextInput::make('preco')
+                            ->numeric()
+                            ->minValue(0)
+                            ->prefix('R$')
+                            ->columnSpan(['default' => 12, 'md' => 5]),
+
                         Toggle::make('exibir_preco')
                             ->label('Exibir preço no site')
                             ->default(true)
                             ->columnSpanFull(),
-                        Textarea::make('descricao')->columnSpanFull(),
+
+                        Textarea::make('descricao')
+                            ->columnSpanFull(),
                     ]),
+
                 Section::make('Mídia')
                     ->components([
                         FileUpload::make('imagem')
@@ -75,15 +90,21 @@ class MenuItemResource extends Resource
                             ->maxSize(2048)
                             ->acceptedFileTypes(['image/jpeg', 'image/jpg', 'image/png', 'image/webp']),
                     ]),
+
                 Section::make('Visibilidade')
                     ->columns(['default' => 1, 'sm' => 3])
                     ->components([
-                        Toggle::make('ativo')->default(true),
+                        Toggle::make('ativo')
+                            ->default(true)
+                            ->inline(false),
+
                         Toggle::make('destaque')
-                            ->helperText('Máximo de 4 itens em destaque na home.'),
+                            ->helperText('Máximo de 4 itens em destaque na home.')
+                            ->inline(false),
+
                         TextInput::make('ordem')
                             ->numeric()
-                            ->default(fn () => (MenuItem::max('ordem') ?? 0) + 1),
+                            ->default(fn() => (MenuItem::max('ordem') ?? 0) + 1),
                     ]),
             ]);
     }
