@@ -5,6 +5,7 @@ namespace App\Filament\Resources\Categories\Pages;
 use App\Filament\Resources\Categories\CategoryResource;
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ManageRecords;
+use Filament\Support\Icons\Heroicon;
 
 class ManageCategories extends ManageRecords
 {
@@ -13,7 +14,7 @@ class ManageCategories extends ManageRecords
     protected function getHeaderActions(): array
     {
         return [
-            CreateAction::make()->label('Nova Categoria'),
+            CreateAction::make()->label('Nova Categoria')->icon(Heroicon::OutlinedPlus),
         ];
     }
 }

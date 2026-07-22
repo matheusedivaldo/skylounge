@@ -2,11 +2,11 @@
 
 namespace App\Filament\Widgets;
 
-use App\Models\MenuItem;
+use App\Models\GalleryItem;
 use Filament\Widgets\StatsOverviewWidget;
 use Filament\Widgets\StatsOverviewWidget\Stat;
 
-class MenuStatsOverview extends StatsOverviewWidget
+class GalleryStatsOverview extends StatsOverviewWidget
 {
     protected static bool $isDiscovered = false;
 
@@ -22,9 +22,9 @@ class MenuStatsOverview extends StatsOverviewWidget
     protected function getStats(): array
     {
         return [
-            Stat::make('Itens Ativos no Cardápio', MenuItem::where('ativo', true)->count())
-                ->description('De um total de ' . MenuItem::count() . ' itens cadastrados')
-                ->icon('heroicon-o-rectangle-stack')
+            Stat::make('Fotos Ativas na Galeria', GalleryItem::where('ativo', true)->count())
+                ->description('De um total de ' . GalleryItem::count() . ' fotos cadastradas')
+                ->icon('heroicon-o-photo')
                 ->color('success'),
         ];
     }

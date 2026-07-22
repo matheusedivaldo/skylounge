@@ -5,6 +5,7 @@ namespace App\Filament\Resources\MenuItems\Pages;
 use App\Filament\Resources\MenuItems\MenuItemResource;
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ManageRecords;
+use Filament\Support\Icons\Heroicon;
 
 class ManageMenuItems extends ManageRecords
 {
@@ -13,7 +14,7 @@ class ManageMenuItems extends ManageRecords
     protected function getHeaderActions(): array
     {
         return [
-            CreateAction::make()->label('Novo Item do Cardápio'),
+            CreateAction::make()->label('Novo Item do Cardápio')->icon(Heroicon::OutlinedPlus),
         ];
     }
 }

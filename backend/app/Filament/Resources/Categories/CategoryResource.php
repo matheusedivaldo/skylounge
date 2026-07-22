@@ -35,7 +35,9 @@ class CategoryResource extends Resource
         return $schema
             ->components([
                 TextInput::make('nome')->required()->maxLength(255),
-                TextInput::make('ordem')->numeric()->default(0),
+                TextInput::make('ordem')
+                    ->numeric()
+                    ->default(fn () => (Category::max('ordem') ?? 0) + 1),
             ]);
     }
 
@@ -44,19 +46,19 @@ class CategoryResource extends Resource
         return $table
             ->recordTitleAttribute('nome')
             ->columns([
-                TextColumn::make('nome')->searchable(),
-                TextColumn::make('ordem'),
+                TextColumn::make('nome')->searchable()->alignCenter(),
+                TextColumn::make('ordem')->alignCenter(),
             ])
             ->defaultSort('ordem')
             ->reorderable('ordem')
             ->filters([])
             ->recordActions([
-                EditAction::make(),
-                DeleteAction::make(),
+                EditAction::make()->icon(Heroicon::OutlinedPencilSquare),
+                DeleteAction::make()->icon(Heroicon::OutlinedTrash),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
-                    DeleteBulkAction::make(),
+                    DeleteBulkAction::make()->icon(Heroicon::OutlinedTrash),
                 ]),
             ]);
     }

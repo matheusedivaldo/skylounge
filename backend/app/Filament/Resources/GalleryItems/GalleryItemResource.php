@@ -17,9 +17,9 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
-use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 
@@ -36,6 +36,8 @@ class GalleryItemResource extends Resource
     protected static ?string $modelLabel = 'Foto da Galeria';
 
     protected static ?string $pluralModelLabel = 'Galeria';
+
+    protected static ?string $navigationLabel = 'Fotos';
 
     public static function form(Schema $schema): Schema
     {
@@ -55,7 +57,7 @@ class GalleryItemResource extends Resource
                         TextInput::make('legenda')->maxLength(255),
                     ]),
                 Section::make('Organização')
-                    ->columns(3)
+                    ->columns(['default' => 1, 'sm' => 2])
                     ->components([
                         Select::make('gallery_category_id')
                             ->label('Categoria')
@@ -64,8 +66,11 @@ class GalleryItemResource extends Resource
                             ->preload()
                             ->createOptionForm([
                                 TextInput::make('nome')->required()->maxLength(255),
-                            ]),
-                        TextInput::make('ordem')->numeric()->default(0),
+                            ])
+                            ->columnSpanFull(),
+                        TextInput::make('ordem')
+                            ->numeric()
+                            ->default(fn () => (GalleryItem::max('ordem') ?? 0) + 1),
                         Toggle::make('ativo')->default(true),
                     ]),
             ]);
@@ -76,10 +81,22 @@ class GalleryItemResource extends Resource
         return $table
             ->recordTitleAttribute('legenda')
             ->columns([
-                ImageColumn::make('imagem')->disk('public'),
-                TextColumn::make('legenda')->searchable(),
-                TextColumn::make('category.nome')->label('Categoria')->badge(),
-                IconColumn::make('ativo')->boolean(),
+                ImageColumn::make('imagem')
+                    ->disk('public')
+                    ->height(56)
+                    ->width(56)
+                    ->extraImgAttributes(['class' => 'object-cover rounded-lg']),
+                TextColumn::make('legenda')
+                    ->label('Legenda')
+                    ->searchable()
+                    ->weight('medium')
+                    ->placeholder('—')
+                    ->wrap(),
+                TextColumn::make('category.nome')
+                    ->label('Categoria')
+                    ->badge()
+                    ->sortable(),
+                ToggleColumn::make('ativo')->label('Ativo'),
             ])
             ->defaultSort('ordem')
             ->reorderable('ordem')
@@ -89,12 +106,12 @@ class GalleryItemResource extends Resource
                     ->relationship('category', 'nome'),
             ])
             ->recordActions([
-                EditAction::make(),
-                DeleteAction::make(),
+                EditAction::make()->icon(Heroicon::OutlinedPencilSquare),
+                DeleteAction::make()->icon(Heroicon::OutlinedTrash),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
-                    DeleteBulkAction::make(),
+                    DeleteBulkAction::make()->icon(Heroicon::OutlinedTrash),
                 ]),
             ]);
     }

@@ -30,12 +30,16 @@ class GalleryCategoryResource extends Resource
 
     protected static ?string $pluralModelLabel = 'Categorias da Galeria';
 
+    protected static ?string $navigationLabel = 'Categorias';
+
     public static function form(Schema $schema): Schema
     {
         return $schema
             ->components([
                 TextInput::make('nome')->required()->maxLength(255),
-                TextInput::make('ordem')->numeric()->default(0),
+                TextInput::make('ordem')
+                    ->numeric()
+                    ->default(fn () => (GalleryCategory::max('ordem') ?? 0) + 1),
             ]);
     }
 
@@ -44,19 +48,19 @@ class GalleryCategoryResource extends Resource
         return $table
             ->recordTitleAttribute('nome')
             ->columns([
-                TextColumn::make('nome')->searchable(),
-                TextColumn::make('ordem'),
+                TextColumn::make('nome')->searchable()->alignCenter(),
+                TextColumn::make('ordem')->alignCenter(),
             ])
             ->defaultSort('ordem')
             ->reorderable('ordem')
             ->filters([])
             ->recordActions([
-                EditAction::make(),
-                DeleteAction::make(),
+                EditAction::make()->icon(Heroicon::OutlinedPencilSquare),
+                DeleteAction::make()->icon(Heroicon::OutlinedTrash),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
-                    DeleteBulkAction::make(),
+                    DeleteBulkAction::make()->icon(Heroicon::OutlinedTrash),
                 ]),
             ]);
     }
