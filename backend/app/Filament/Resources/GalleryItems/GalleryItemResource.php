@@ -46,32 +46,48 @@ class GalleryItemResource extends Resource
                 Section::make('Imagem')
                     ->components([
                         FileUpload::make('imagem')
+                            ->label('Imagem')
                             ->image()
                             ->disk('public')
                             ->directory('gallery-items')
                             ->imagePreviewHeight('150')
                             ->imageEditor()
                             ->maxSize(2048)
-                            ->acceptedFileTypes(['image/jpeg', 'image/jpg', 'image/png', 'image/webp'])
+                            ->acceptedFileTypes([
+                                'image/jpeg',
+                                'image/jpg',
+                                'image/png',
+                                'image/webp',
+                            ])
                             ->required(),
-                        TextInput::make('legenda')->maxLength(255),
+
+                        TextInput::make('legenda')
+                            ->label('Legenda')
+                            ->maxLength(255),
                     ]),
+
                 Section::make('Organização')
-                    ->columns(['default' => 1, 'sm' => 2])
+                    ->columns(3)
                     ->components([
                         Select::make('gallery_category_id')
                             ->label('Categoria')
                             ->relationship('category', 'nome')
                             ->searchable()
                             ->preload()
-                            ->createOptionForm([
-                                TextInput::make('nome')->required()->maxLength(255),
-                            ])
-                            ->columnSpanFull(),
+                            ->required()
+                            ->columnSpan(2),
+
                         TextInput::make('ordem')
+                            ->label('Ordem')
                             ->numeric()
-                            ->default(fn () => (GalleryItem::max('ordem') ?? 0) + 1),
-                        Toggle::make('ativo')->default(true),
+                            ->minValue(1)
+                            ->default(fn() => (GalleryItem::max('ordem') ?? 0) + 1)
+                            ->columnSpan(1),
+
+                        Toggle::make('ativo')
+                            ->label('Ativo')
+                            ->default(true)
+                            ->columnSpanFull(),
                     ]),
             ]);
     }
@@ -85,18 +101,29 @@ class GalleryItemResource extends Resource
                     ->disk('public')
                     ->height(56)
                     ->width(56)
-                    ->extraImgAttributes(['class' => 'object-cover rounded-lg']),
+                    ->extraImgAttributes([
+                        'class' => 'object-cover rounded-lg',
+                    ]),
+
                 TextColumn::make('legenda')
                     ->label('Legenda')
                     ->searchable()
                     ->weight('medium')
                     ->placeholder('—')
                     ->wrap(),
+
                 TextColumn::make('category.nome')
                     ->label('Categoria')
                     ->badge()
                     ->sortable(),
-                ToggleColumn::make('ativo')->label('Ativo'),
+
+                TextColumn::make('ordem')
+                    ->label('Ordem')
+                    ->sortable()
+                    ->alignCenter(),
+
+                ToggleColumn::make('ativo')
+                    ->label('Ativo'),
             ])
             ->defaultSort('ordem')
             ->reorderable('ordem')
@@ -106,12 +133,16 @@ class GalleryItemResource extends Resource
                     ->relationship('category', 'nome'),
             ])
             ->recordActions([
-                EditAction::make()->icon(Heroicon::OutlinedPencilSquare),
-                DeleteAction::make()->icon(Heroicon::OutlinedTrash),
+                EditAction::make()
+                    ->icon(Heroicon::OutlinedPencilSquare),
+
+                DeleteAction::make()
+                    ->icon(Heroicon::OutlinedTrash),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
-                    DeleteBulkAction::make()->icon(Heroicon::OutlinedTrash),
+                    DeleteBulkAction::make()
+                        ->icon(Heroicon::OutlinedTrash),
                 ]),
             ]);
     }
