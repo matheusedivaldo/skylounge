@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaInstagram, FaWhatsapp, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaInstagram, FaWhatsapp, FaMapMarkerAlt, FaLock } from 'react-icons/fa';
 import logoImg from '../../assets/img/logos/logo-04.png';
 import styles from './Footer.module.css';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
@@ -7,6 +7,7 @@ import { useScrollReveal } from '../../hooks/useScrollReveal';
 export default function Footer() {
     const { ref, isVisible } = useScrollReveal(0.1);
     const whatsappUrl = "https://wa.me/5511994376464?text=Vim+pelo+site+e+gostaria+de+mais+informa%C3%A7%C3%B5es";
+    const adminUrl = `${(import.meta.env.VITE_API_URL || '').replace(/\/api\/?$/, '')}/admin`;
 
     return (
         <footer className={`${styles.footer} ${isVisible ? 'visible' : ''}`} ref={ref}>
@@ -54,6 +55,10 @@ export default function Footer() {
                 </div>
 
                 <div className={`${styles.bottomSection} revealUp delay-3`}>
+                    <a href={adminUrl} target="_blank" rel="noopener noreferrer" className={styles.adminLink}>
+                        <FaLock size={11} />
+                        Acesso Administrativo
+                    </a>
                     <p className={styles.developer}>
                         Desenvolvido por <a href="https://matheusedivaldo.com.br/" target="_blank" rel="noopener noreferrer">Matheus Edivaldo</a>
                     </p>
