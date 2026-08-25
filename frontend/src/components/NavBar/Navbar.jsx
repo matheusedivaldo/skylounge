@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { FaBars, FaTimes, FaWhatsapp } from 'react-icons/fa';
-import logoImg from '../../assets/img/logos/logo-04.png';
+import logoImg from '../../assets/img/logos/sky-lounge-logo-full.svg';
 import styles from './Navbar.module.css';
 
 export default function Navbar() {

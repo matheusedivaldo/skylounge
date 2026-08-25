@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaInstagram, FaWhatsapp, FaMapMarkerAlt, FaLock } from 'react-icons/fa';
-import logoImg from '../../assets/img/logos/logo-04.png';
+import logoImg from '../../assets/img/logos/sky-lounge-logo-full.svg';
 import styles from './Footer.module.css';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
 

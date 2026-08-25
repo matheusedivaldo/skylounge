@@ -30,9 +30,11 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
+            ->profile()
+            ->darkMode(isForced: true)
             ->brandName('Sky Lounge Rooftop')
-            ->brandLogo(asset('images/logo-sky-lounge-mark.png'))
-            ->brandLogoHeight('3rem')
+            ->brandLogo(asset('images/sky-lounge-mark-dark.svg'))
+            ->brandLogoHeight('2.75rem')
             ->favicon(asset('favicon.ico'))
             ->colors([
                 'primary' => Color::hex('#c8a45d'),
