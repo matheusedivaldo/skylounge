@@ -10,7 +10,7 @@ class Dashboard extends BaseDashboard
     {
         return [
             'default' => 1,
-            'md' => 3,
+            'md' => 2,
         ];
     }
 }
