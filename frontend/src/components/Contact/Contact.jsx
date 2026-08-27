@@ -3,7 +3,7 @@ import { FaMapMarkerAlt, FaRegClock, FaWhatsapp, FaArrowRight } from 'react-icon
 import styles from './Contact.module.css';
 
 export default function Contact() {
-    const whatsappUrl = "https://wa.me/5511994376464?text=Vim+pelo+site+e+gostaria+de+fazer+uma+reserva";
+    const whatsappUrl = "https://wa.me/551154444408?text=Vim+pelo+site+e+gostaria+de+fazer+uma+reserva";
 
     return (
         <section className={styles.contactSection} id="reservas">

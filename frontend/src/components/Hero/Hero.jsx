@@ -31,7 +31,7 @@ const slidesData = [
 
 export default function Hero() {
     const [current, setCurrent] = useState(0);
-    const whatsappUrl = "https://wa.me/5511994376464?text=Vim+pelo+site+e+gostaria+de+mais+informa%C3%A7%C3%B5es";
+    const whatsappUrl = "https://wa.me/551154444408?text=Vim+pelo+site+e+gostaria+de+mais+informa%C3%A7%C3%B5es";
 
     useEffect(() => {
         const timer = setInterval(() => {

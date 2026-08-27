@@ -6,7 +6,7 @@ import { useScrollReveal } from '../../hooks/useScrollReveal';
 
 export default function Footer() {
     const { ref, isVisible } = useScrollReveal(0.1);
-    const whatsappUrl = "https://wa.me/5511994376464?text=Vim+pelo+site+e+gostaria+de+mais+informa%C3%A7%C3%B5es";
+    const whatsappUrl = "https://wa.me/551154444408?text=Vim+pelo+site+e+gostaria+de+mais+informa%C3%A7%C3%B5es";
     const adminUrl = `${(import.meta.env.VITE_API_URL || '').replace(/\/api\/?$/, '')}/admin`;
 
     return (
@@ -41,7 +41,7 @@ export default function Footer() {
                             <li>
                                 <FaWhatsapp size={16} />
                                 <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
-                                    +55 11 99437-6464
+                                    (11) 5444-4408
                                 </a>
                             </li>
                             <li>

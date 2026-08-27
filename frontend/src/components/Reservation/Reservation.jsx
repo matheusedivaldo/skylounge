@@ -37,7 +37,7 @@ export default function Reservation() {
             `*Motivo:* ${formData.motivo}%0A` +
             `*Observações:* ${formData.observacao}`;
 
-        window.open(`https://wa.me/5511994376464?text=${text}`, '_blank');
+        window.open(`https://wa.me/551154444408?text=${text}`, '_blank');
     };
 
     return (

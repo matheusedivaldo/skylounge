@@ -3,7 +3,7 @@ export const SITE_NAME = 'Sky Lounge Rooftop';
 
 export const BUSINESS = {
     name: 'Sky Lounge Rooftop',
-    telephone: '+5511994376464',
+    telephone: '+551154444408',
     priceRange: '$$$',
     streetAddress: 'Rua Prof. Jose Azevedo Minhoto, 509 - Cobertura',
     addressLocality: 'Osasco',
