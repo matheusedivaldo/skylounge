@@ -37,55 +37,62 @@ class AnotacaoResource extends Resource
 
     public static function form(Schema $schema): Schema
     {
-        return $schema
-            ->components([
-                Section::make('Acesso')
-                    ->columns(['default' => 1, 'md' => 2])
-                    ->components([
-                        TextInput::make('titulo')
-                            ->label('Título')
-                            ->helperText('Ex.: Instagram, Google Meu Negócio, iFood...')
-                            ->required()
-                            ->maxLength(255)
-                            ->columnSpanFull(),
+        return $schema->components(static::formSchema());
+    }
 
-                        TextInput::make('usuario')
-                            ->label('Usuário / E-mail'),
+    /**
+     * @return array<\Filament\Schemas\Components\Component>
+     */
+    public static function formSchema(): array
+    {
+        return [
+            Section::make('Acesso')
+                ->columns(['default' => 1, 'md' => 2])
+                ->components([
+                    TextInput::make('titulo')
+                        ->label('Título')
+                        ->helperText('Ex.: Instagram, Google Meu Negócio, iFood...')
+                        ->required()
+                        ->maxLength(255)
+                        ->columnSpanFull(),
 
-                        TextInput::make('senha')
-                            ->label('Senha')
-                            ->password()
-                            ->revealable(),
+                    TextInput::make('usuario')
+                        ->label('Usuário / E-mail'),
 
-                        TextInput::make('link')
-                            ->label('Link')
-                            ->url()
-                            ->columnSpanFull(),
+                    TextInput::make('senha')
+                        ->label('Senha')
+                        ->password()
+                        ->revealable(),
 
-                        TextInput::make('texto_botao')
-                            ->label('Texto do botão')
-                            ->default('Abrir')
-                            ->maxLength(255),
+                    TextInput::make('link')
+                        ->label('Link')
+                        ->url()
+                        ->columnSpanFull(),
 
-                        TextInput::make('icone')
-                            ->label('Ícone (heroicon)')
-                            ->helperText('Nome de um heroicon, ex.: heroicon-o-camera')
-                            ->default('heroicon-o-key')
-                            ->maxLength(255),
-                    ]),
+                    TextInput::make('texto_botao')
+                        ->label('Texto do botão')
+                        ->default('Abrir')
+                        ->maxLength(255),
 
-                Section::make('Visibilidade')
-                    ->columns(['default' => 1, 'sm' => 2])
-                    ->components([
-                        Toggle::make('ativo')
-                            ->default(true)
-                            ->inline(false),
+                    TextInput::make('icone')
+                        ->label('Ícone (heroicon)')
+                        ->helperText('Nome de um heroicon, ex.: heroicon-o-camera')
+                        ->default('heroicon-o-key')
+                        ->maxLength(255),
+                ]),
 
-                        TextInput::make('ordem')
-                            ->numeric()
-                            ->default(fn () => (Anotacao::max('ordem') ?? 0) + 1),
-                    ]),
-            ]);
+            Section::make('Visibilidade')
+                ->columns(['default' => 1, 'sm' => 2])
+                ->components([
+                    Toggle::make('ativo')
+                        ->default(true)
+                        ->inline(false),
+
+                    TextInput::make('ordem')
+                        ->numeric()
+                        ->default(fn () => (Anotacao::max('ordem') ?? 0) + 1),
+                ]),
+        ];
     }
 
     public static function table(Table $table): Table
