@@ -9,6 +9,7 @@ use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Resources\Resource;
@@ -76,11 +77,21 @@ class AnotacaoResource extends Resource
                         ->default('Abrir')
                         ->maxLength(255),
 
-                    TextInput::make('icone')
-                        ->label('Ícone (heroicon)')
-                        ->helperText('Nome de um heroicon, ex.: heroicon-o-camera')
+                    Select::make('icone')
+                        ->label('Tipo de anotação')
+                        ->options([
+                            'heroicon-o-key' => '🔑 Genérico',
+                            'heroicon-o-envelope' => '✉️ E-mail',
+                            'heroicon-o-camera' => '📷 Instagram',
+                            'heroicon-o-hand-thumb-up' => '📘 Facebook',
+                            'heroicon-o-chat-bubble-left-right' => '💬 WhatsApp',
+                            'heroicon-o-magnifying-glass' => '🔍 Google',
+                            'heroicon-o-shopping-bag' => '🍔 iFood',
+                            'heroicon-o-globe-alt' => '🌐 Site / Link',
+                        ])
+                        ->native(false)
                         ->default('heroicon-o-key')
-                        ->maxLength(255),
+                        ->required(),
                 ]),
 
             Section::make('Visibilidade')
