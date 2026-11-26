@@ -9,9 +9,9 @@ use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
-use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
+use Filament\Forms\Components\ToggleButtons;
 use Filament\Resources\Resource;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
@@ -41,6 +41,23 @@ class AnotacaoResource extends Resource
     public static function form(Schema $schema): Schema
     {
         return $schema->components(static::formSchema());
+    }
+
+    /**
+     * @return array<string, string>
+     */
+    public static function iconOptions(): array
+    {
+        return [
+            'heroicon-o-key' => 'Genérico',
+            'heroicon-o-envelope' => 'E-mail',
+            'heroicon-o-camera' => 'Instagram',
+            'heroicon-o-hand-thumb-up' => 'Facebook',
+            'heroicon-o-chat-bubble-left-right' => 'WhatsApp',
+            'heroicon-o-magnifying-glass' => 'Google',
+            'heroicon-o-shopping-bag' => 'iFood',
+            'heroicon-o-globe-alt' => 'Site / Link',
+        ];
     }
 
     /**
@@ -77,21 +94,17 @@ class AnotacaoResource extends Resource
                         ->default('Abrir')
                         ->maxLength(255),
 
-                    Select::make('icone')
+                    ToggleButtons::make('icone')
                         ->label('Tipo de anotação')
-                        ->options([
-                            'heroicon-o-key' => '🔑 Genérico',
-                            'heroicon-o-envelope' => '✉️ E-mail',
-                            'heroicon-o-camera' => '📷 Instagram',
-                            'heroicon-o-hand-thumb-up' => '📘 Facebook',
-                            'heroicon-o-chat-bubble-left-right' => '💬 WhatsApp',
-                            'heroicon-o-magnifying-glass' => '🔍 Google',
-                            'heroicon-o-shopping-bag' => '🍔 iFood',
-                            'heroicon-o-globe-alt' => '🌐 Site / Link',
-                        ])
-                        ->native(false)
+                        ->options(static::iconOptions())
+                        ->icons(array_combine(
+                            array_keys(static::iconOptions()),
+                            array_keys(static::iconOptions()),
+                        ))
+                        ->inline()
                         ->default('heroicon-o-key')
-                        ->required(),
+                        ->required()
+                        ->columnSpanFull(),
                 ]),
 
             Section::make('Visibilidade')
