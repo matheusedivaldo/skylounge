@@ -35,6 +35,8 @@ class AnotacaoResource extends Resource
 
     protected static ?string $navigationLabel = 'Anotações';
 
+    protected static bool $shouldRegisterNavigation = false;
+
     public static function form(Schema $schema): Schema
     {
         return $schema->components(static::formSchema());

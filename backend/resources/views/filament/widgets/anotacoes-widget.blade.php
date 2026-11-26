@@ -8,6 +8,7 @@
                 icon-color="primary"
                 heading="{{ $anotacao->titulo }}"
                 class="sky-webmail-widget"
+                compact
             >
                 <x-slot name="afterHeader">
                     <div class="sky-webmail-widget__actions">
@@ -33,7 +34,7 @@
                             <span class="sky-webmail-widget__label">Usuário</span>
 
                             <div class="sky-webmail-widget__value-row">
-                                <span class="sky-webmail-widget__value">{{ $anotacao->usuario }}</span>
+                                <span class="sky-webmail-widget__value" title="{{ $anotacao->usuario }}">{{ $anotacao->usuario }}</span>
 
                                 <button
                                     type="button"
